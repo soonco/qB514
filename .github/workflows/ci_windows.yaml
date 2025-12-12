@@ -1,6 +1,6 @@
 name: CI - Windows
 
-on: [pull_request, push, workflow_dispatch]
+on: [workflow_dispatch]
 
 permissions: {}
 
@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        libt_version: ["2.0.11", "1.2.20"]
+        libt_version: ["2011", "1220"]
 
     env:
       boost_path: "${{ github.workspace }}/../boost"
@@ -105,12 +105,7 @@ jobs:
 
       - name: Install libtorrent
         run: |
-          git clone `
-            --branch v${{ matrix.libt_version }} `
-            --depth 1 `
-            --recurse-submodules `
-            https://github.com/arvidn/libtorrent.git `
-            ${{ env.libtorrent_path }}
+          mv ${{ github.workspace }}/libtorrent/${{ matrix.libt_version }} ${{ env.libtorrent_path }}
           cd ${{ env.libtorrent_path }}
           $env:CXXFLAGS+=" /guard:cf"
           $env:LDFLAGS+=" /guard:cf"
