@@ -52,151 +52,169 @@ namespace
          return u"<a href=\"%1\">%2</a>"_s.arg(url, linkLabel);
     }
 
+    // 高级设置列枚举
+    // Advanced settings columns enum
     enum AdvSettingsCols
     {
-        PROPERTY,
-        VALUE,
-        COL_COUNT
+        PROPERTY,  // 属性列 Property column
+        VALUE,     // 值列 Value column
+        COL_COUNT  // 列数 Column count
     };
 
+    // 高级设置行枚举
+    // Advanced settings rows enum
     enum AdvSettingsRows
     {
+        // qBittorrent 部分
         // qBittorrent section
         QBITTORRENT_HEADER,
-        RESUME_DATA_STORAGE,
-        TORRENT_CONTENT_REMOVE_OPTION,
+        RESUME_DATA_STORAGE,  // 恢复数据存储 Resume data storage
+        TORRENT_CONTENT_REMOVE_OPTION,  // 种子内容移除选项 Torrent content remove option
 #if defined(QBT_USES_LIBTORRENT2) && !defined(Q_OS_MACOS)
-        MEMORY_WORKING_SET_LIMIT,
+        MEMORY_WORKING_SET_LIMIT,  // 内存工作集限制 Memory working set limit
 #endif
 #if defined(Q_OS_WIN)
-        OS_MEMORY_PRIORITY,
+        OS_MEMORY_PRIORITY,  // 操作系统内存优先级 OS memory priority
 #endif
+        // 网络接口
         // network interface
-        NETWORK_IFACE,
+        NETWORK_IFACE,  // 网络接口 Network interface
+        // 可选网络地址
         //Optional network address
-        NETWORK_IFACE_ADDRESS,
+        NETWORK_IFACE_ADDRESS,  // 网络接口地址 Network interface address
+        // 行为设置
         // behavior
-        SAVE_RESUME_DATA_INTERVAL,
-        SAVE_STATISTICS_INTERVAL,
-        TORRENT_FILE_SIZE_LIMIT,
-        CONFIRM_RECHECK_TORRENT,
-        RECHECK_COMPLETED,
+        SAVE_RESUME_DATA_INTERVAL,  // 保存恢复数据间隔 Save resume data interval
+        SAVE_STATISTICS_INTERVAL,  // 保存统计数据间隔 Save statistics interval
+        TORRENT_FILE_SIZE_LIMIT,  // 种子文件大小限制 Torrent file size limit
+        CONFIRM_RECHECK_TORRENT,  // 确认重新检查种子 Confirm recheck torrent
+        RECHECK_COMPLETED,  // 完成后重新检查 Recheck completed
+        // UI 相关
         // UI related
-        APP_INSTANCE_NAME,
-        LIST_REFRESH,
-        RESOLVE_HOSTS,
-        RESOLVE_COUNTRIES,
-        PROGRAM_NOTIFICATIONS,
-        TORRENT_ADDED_NOTIFICATIONS,
+        APP_INSTANCE_NAME,  // 应用实例名称 App instance name
+        LIST_REFRESH,  // 列表刷新 List refresh
+        RESOLVE_HOSTS,  // 解析主机名 Resolve hosts
+        RESOLVE_COUNTRIES,  // 解析国家 Resolve countries
+        PROGRAM_NOTIFICATIONS,  // 程序通知 Program notifications
+        TORRENT_ADDED_NOTIFICATIONS,  // 种子添加通知 Torrent added notifications
 #ifdef QBT_USES_DBUS
-        NOTIFICATION_TIMEOUT,
+        NOTIFICATION_TIMEOUT,  // 通知超时 Notification timeout
 #endif
-        CONFIRM_REMOVE_ALL_TAGS,
-        CONFIRM_REMOVE_TRACKER_FROM_ALL_TORRENTS,
-        REANNOUNCE_WHEN_ADDRESS_CHANGED,
-        DOWNLOAD_TRACKER_FAVICON,
-        SAVE_PATH_HISTORY_LENGTH,
-        ENABLE_SPEED_WIDGET,
+        CONFIRM_REMOVE_ALL_TAGS,  // 确认移除所有标签 Confirm remove all tags
+        CONFIRM_REMOVE_TRACKER_FROM_ALL_TORRENTS,  // 确认从所有种子移除 Tracker Confirm remove tracker from all torrents
+        REANNOUNCE_WHEN_ADDRESS_CHANGED,  // 地址改变时重新通告 Reannounce when address changed
+        DOWNLOAD_TRACKER_FAVICON,  // 下载 Tracker 图标 Download tracker favicon
+        SAVE_PATH_HISTORY_LENGTH,  // 保存路径历史长度 Save path history length
+        ENABLE_SPEED_WIDGET,  // 启用速度小部件 Enable speed widget
 #ifndef Q_OS_MACOS
-        ENABLE_ICONS_IN_MENUS,
-        USE_ATTACHED_ADD_NEW_TORRENT_DIALOG,
+        ENABLE_ICONS_IN_MENUS,  // 在菜单中启用图标 Enable icons in menus
+        USE_ATTACHED_ADD_NEW_TORRENT_DIALOG,  // 使用附加的添加新种子对话框 Use attached add new torrent dialog
 #endif
+        // 内嵌 tracker
         // embedded tracker
-        TRACKER_STATUS,
-        TRACKER_PORT,
-        TRACKER_PORT_FORWARDING,
+        TRACKER_STATUS,  // Tracker 状态 Tracker status
+        TRACKER_PORT,  // Tracker 端口 Tracker port
+        TRACKER_PORT_FORWARDING,  // Tracker 端口转发 Tracker port forwarding
 #if defined(Q_OS_MACOS) || defined(Q_OS_WIN)
-        ENABLE_MARK_OF_THE_WEB,
+        ENABLE_MARK_OF_THE_WEB,  // 启用网络标记 Enable mark of the web
 #endif // Q_OS_MACOS || Q_OS_WIN
-        IGNORE_SSL_ERRORS,
-        PYTHON_EXECUTABLE_PATH,
-        START_SESSION_PAUSED,
-        SESSION_SHUTDOWN_TIMEOUT,
+        IGNORE_SSL_ERRORS,  // 忽略 SSL 错误 Ignore SSL errors
+        PYTHON_EXECUTABLE_PATH,  // Python 可执行文件路径 Python executable path
+        START_SESSION_PAUSED,  // 以暂停状态启动会话 Start session paused
+        SESSION_SHUTDOWN_TIMEOUT,  // 会话关闭超时 Session shutdown timeout
 
+        // libtorrent 部分
         // libtorrent section
         LIBTORRENT_HEADER,
-        BDECODE_DEPTH_LIMIT,
-        BDECODE_TOKEN_LIMIT,
-        ASYNC_IO_THREADS,
+        BDECODE_DEPTH_LIMIT,  // Bencode 解码深度限制 Bdecode depth limit
+        BDECODE_TOKEN_LIMIT,  // Bencode 解码令牌限制 Bdecode token limit
+        ASYNC_IO_THREADS,  // 异步 I/O 线程数 Async I/O threads
 #ifdef QBT_USES_LIBTORRENT2
-        HASHING_THREADS,
+        HASHING_THREADS,  // 哈希计算线程数 Hashing threads
 #endif
-        FILE_POOL_SIZE,
-        CHECKING_MEM_USAGE,
+        FILE_POOL_SIZE,  // 文件池大小 File pool size
+        CHECKING_MEM_USAGE,  // 检查内存使用 Checking memory usage
 #ifndef QBT_USES_LIBTORRENT2
+        // 缓存
         // cache
-        DISK_CACHE,
-        DISK_CACHE_TTL,
+        DISK_CACHE,  // 磁盘缓存 Disk cache
+        DISK_CACHE_TTL,  // 磁盘缓存 TTL Disk cache TTL
 #endif
-        DISK_QUEUE_SIZE,
+        DISK_QUEUE_SIZE,  // 磁盘队列大小 Disk queue size
 #ifdef QBT_USES_LIBTORRENT2
-        DISK_IO_TYPE,
+        DISK_IO_TYPE,  // 磁盘 I/O 类型 Disk I/O type
 #endif
-        DISK_IO_READ_MODE,
-        DISK_IO_WRITE_MODE,
+        DISK_IO_READ_MODE,  // 磁盘 I/O 读取模式 Disk I/O read mode
+        DISK_IO_WRITE_MODE,  // 磁盘 I/O 写入模式 Disk I/O write mode
 #ifndef QBT_USES_LIBTORRENT2
-        COALESCE_RW,
+        COALESCE_RW,  // 合并读写 Coalesce read/write
 #endif
-        PIECE_EXTENT_AFFINITY,
-        SUGGEST_MODE,
-        SEND_BUF_WATERMARK,
-        SEND_BUF_LOW_WATERMARK,
-        SEND_BUF_WATERMARK_FACTOR,
+        PIECE_EXTENT_AFFINITY,  // 片段范围亲和性 Piece extent affinity
+        SUGGEST_MODE,  // 建议模式 Suggest mode
+        SEND_BUF_WATERMARK,  // 发送缓冲区水位 Send buffer watermark
+        SEND_BUF_LOW_WATERMARK,  // 发送缓冲区低水位 Send buffer low watermark
+        SEND_BUF_WATERMARK_FACTOR,  // 发送缓冲区水位因子 Send buffer watermark factor
+        // 网络和端口
         // networking & ports
-        CONNECTION_SPEED,
-        SOCKET_SEND_BUFFER_SIZE,
-        SOCKET_RECEIVE_BUFFER_SIZE,
-        SOCKET_BACKLOG_SIZE,
-        OUTGOING_PORT_MIN,
-        OUTGOING_PORT_MAX,
-        UPNP_LEASE_DURATION,
-        PEER_TOS,
-        UTP_MIX_MODE,
-        IDN_SUPPORT,
-        MULTI_CONNECTIONS_PER_IP,
-        VALIDATE_HTTPS_TRACKER_CERTIFICATE,
-        SSRF_MITIGATION,
-        BLOCK_PEERS_ON_PRIVILEGED_PORTS,
+        CONNECTION_SPEED,  // 连接速度 Connection speed
+        SOCKET_SEND_BUFFER_SIZE,  // Socket 发送缓冲区大小 Socket send buffer size
+        SOCKET_RECEIVE_BUFFER_SIZE,  // Socket 接收缓冲区大小 Socket receive buffer size
+        SOCKET_BACKLOG_SIZE,  // Socket 积压队列大小 Socket backlog size
+        OUTGOING_PORT_MIN,  // 出站端口最小值 Outgoing port min
+        OUTGOING_PORT_MAX,  // 出站端口最大值 Outgoing port max
+        UPNP_LEASE_DURATION,  // UPnP 租约持续时间 UPnP lease duration
+        PEER_TOS,  // 对等节点 TOS Peer TOS
+        UTP_MIX_MODE,  // uTP 混合模式 uTP mix mode
+        IDN_SUPPORT,  // IDN 支持 IDN support
+        MULTI_CONNECTIONS_PER_IP,  // 每个 IP 的多连接 Multi connections per IP
+        VALIDATE_HTTPS_TRACKER_CERTIFICATE,  // 验证 HTTPS Tracker 证书 Validate HTTPS tracker certificate
+        SSRF_MITIGATION,  // SSRF 缓解 SSRF mitigation
+        BLOCK_PEERS_ON_PRIVILEGED_PORTS,  // 阻止特权端口上的对等节点 Block peers on privileged ports
+        // 做种
         // seeding
-        CHOKING_ALGORITHM,
-        SEED_CHOKING_ALGORITHM,
+        CHOKING_ALGORITHM,  // 阻塞算法 Choking algorithm
+        SEED_CHOKING_ALGORITHM,  // 做种阻塞算法 Seed choking algorithm
         // tracker
-        ANNOUNCE_ALL_TRACKERS,
-        ANNOUNCE_ALL_TIERS,
-        ANNOUNCE_IP,
-        ANNOUNCE_PORT,
-        MAX_CONCURRENT_HTTP_ANNOUNCES,
-        STOP_TRACKER_TIMEOUT,
-        PEER_TURNOVER,
-        PEER_TURNOVER_CUTOFF,
-        PEER_TURNOVER_INTERVAL,
-        REQUEST_QUEUE_SIZE,
-        DHT_BOOTSTRAP_NODES,
+        ANNOUNCE_ALL_TRACKERS,  // 通告所有 Tracker Announce all trackers
+        ANNOUNCE_ALL_TIERS,  // 通告所有层级 Announce all tiers
+        ANNOUNCE_IP,  // 通告 IP Announce IP
+        ANNOUNCE_PORT,  // 通告端口 Announce port
+        MAX_CONCURRENT_HTTP_ANNOUNCES,  // 最大并发 HTTP 通告数 Max concurrent HTTP announces
+        STOP_TRACKER_TIMEOUT,  // 停止 Tracker 超时 Stop tracker timeout
+        PEER_TURNOVER,  // 对等节点周转率 Peer turnover
+        PEER_TURNOVER_CUTOFF,  // 对等节点周转截止 Peer turnover cutoff
+        PEER_TURNOVER_INTERVAL,  // 对等节点周转间隔 Peer turnover interval
+        REQUEST_QUEUE_SIZE,  // 请求队列大小 Request queue size
+        DHT_BOOTSTRAP_NODES,  // DHT 引导节点 DHT bootstrap nodes
 #if defined(QBT_USES_LIBTORRENT2) && TORRENT_USE_I2P
-        I2P_INBOUND_QUANTITY,
-        I2P_OUTBOUND_QUANTITY,
-        I2P_INBOUND_LENGTH,
-        I2P_OUTBOUND_LENGTH,
+        I2P_INBOUND_QUANTITY,  // I2P 入站数量 I2P inbound quantity
+        I2P_OUTBOUND_QUANTITY,  // I2P 出站数量 I2P outbound quantity
+        I2P_INBOUND_LENGTH,  // I2P 入站长度 I2P inbound length
+        I2P_OUTBOUND_LENGTH,  // I2P 出站长度 I2P outbound length
 #endif
 
-        ROW_COUNT
+        ROW_COUNT  // 行数 Row count
     };
 }
 
 AdvancedSettings::AdvancedSettings(IGUIApplication *app, QWidget *parent)
     : GUIApplicationComponent(app, parent)
 {
+    // 列设置
     // column
     setColumnCount(COL_COUNT);
     const QStringList header = {tr("Setting"), tr("Value", "Value set for this setting")};
     setHorizontalHeaderLabels(header);
+    // 行设置
     // row
     setRowCount(ROW_COUNT);
     verticalHeader()->setVisible(false);
+    // 其他设置
     // etc.
     setAlternatingRowColors(true);
     setSelectionMode(QAbstractItemView::NoSelection);
     setEditTriggers(QAbstractItemView::NoEditTriggers);
+    // 加载设置
     // Load settings
     loadAdvancedSettings();
     resizeColumnToContents(0);
@@ -210,121 +228,167 @@ void AdvancedSettings::saveAdvancedSettings() const
 
     session->setResumeDataStorageType(m_comboBoxResumeDataStorage.currentData().value<BitTorrent::ResumeDataStorageType>());
 #if defined(QBT_USES_LIBTORRENT2) && !defined(Q_OS_MACOS)
+    // 物理内存（RAM）使用限制
     // Physical memory (RAM) usage limit
     app()->setMemoryWorkingSetLimit(m_spinBoxMemoryWorkingSetLimit.value());
 #endif
 #if defined(Q_OS_WIN)
     app()->setProcessMemoryPriority(m_comboBoxOSMemoryPriority.currentData().value<MemoryPriority>());
 #endif
+    // Bencode 解码深度限制
     // Bdecode depth limit
     pref->setBdecodeDepthLimit(m_spinBoxBdecodeDepthLimit.value());
+    // Bencode 解码令牌限制
     // Bdecode token limit
     pref->setBdecodeTokenLimit(m_spinBoxBdecodeTokenLimit.value());
+    // 异步 I/O 线程数
     // Async IO threads
     session->setAsyncIOThreads(m_spinBoxAsyncIOThreads.value());
 #ifdef QBT_USES_LIBTORRENT2
+    // 哈希计算线程数
     // Hashing threads
     session->setHashingThreads(m_spinBoxHashingThreads.value());
 #endif
+    // 文件池大小
     // File pool size
     session->setFilePoolSize(m_spinBoxFilePoolSize.value());
+    // 检查内存使用
     // Checking Memory Usage
     session->setCheckingMemUsage(m_spinBoxCheckingMemUsage.value());
 #ifndef QBT_USES_LIBTORRENT2
+    // 磁盘写入缓存
     // Disk write cache
     session->setDiskCacheSize(m_spinBoxCache.value());
     session->setDiskCacheTTL(m_spinBoxCacheTTL.value());
 #endif
+    // 磁盘队列大小
     // Disk queue size
     session->setDiskQueueSize(m_spinBoxDiskQueueSize.value() * 1024);
 #ifdef QBT_USES_LIBTORRENT2
     session->setDiskIOType(m_comboBoxDiskIOType.currentData().value<BitTorrent::DiskIOType>());
 #endif
+    // 磁盘 I/O 读取模式
     // Disk IO read mode
     session->setDiskIOReadMode(m_comboBoxDiskIOReadMode.currentData().value<BitTorrent::DiskIOReadMode>());
+    // 磁盘 I/O 写入模式
     // Disk IO write mode
     session->setDiskIOWriteMode(m_comboBoxDiskIOWriteMode.currentData().value<BitTorrent::DiskIOWriteMode>());
 #ifndef QBT_USES_LIBTORRENT2
+    // 合并读写操作
     // Coalesce reads & writes
     session->setCoalesceReadWriteEnabled(m_checkBoxCoalesceRW.isChecked());
 #endif
+    // 片段范围亲和性
     // Piece extent affinity
     session->setPieceExtentAffinity(m_checkBoxPieceExtentAffinity.isChecked());
+    // 建议模式
     // Suggest mode
     session->setSuggestMode(m_checkBoxSuggestMode.isChecked());
+    // 发送缓冲区水位
     // Send buffer watermark
     session->setSendBufferWatermark(m_spinBoxSendBufferWatermark.value());
     session->setSendBufferLowWatermark(m_spinBoxSendBufferLowWatermark.value());
     session->setSendBufferWatermarkFactor(m_spinBoxSendBufferWatermarkFactor.value());
+    // 每秒出站连接数
     // Outgoing connections per second
     session->setConnectionSpeed(m_spinBoxConnectionSpeed.value());
+    // Socket 发送缓冲区大小
     // Socket send buffer size
     session->setSocketSendBufferSize(m_spinBoxSocketSendBufferSize.value() * 1024);
+    // Socket 接收缓冲区大小
     // Socket receive buffer size
     session->setSocketReceiveBufferSize(m_spinBoxSocketReceiveBufferSize.value() * 1024);
+    // Socket 监听积压队列大小
     // Socket listen backlog size
     session->setSocketBacklogSize(m_spinBoxSocketBacklogSize.value());
+    // 保存恢复数据间隔
     // Save resume data interval
     session->setSaveResumeDataInterval(m_spinBoxSaveResumeDataInterval.value());
+    // 保存统计数据间隔
     // Save statistics interval
     session->setSaveStatisticsInterval(std::chrono::minutes(m_spinBoxSaveStatisticsInterval.value()));
+    // .torrent 文件大小限制
     // .torrent file size limit
     pref->setTorrentFileSizeLimit(m_spinBoxTorrentFileSizeLimit.value() * 1024 * 1024);
+    // 出站端口范围
     // Outgoing ports
     session->setOutgoingPortsMin(m_spinBoxOutgoingPortsMin.value());
     session->setOutgoingPortsMax(m_spinBoxOutgoingPortsMax.value());
+    // UPnP 租约持续时间
     // UPnP lease duration
     session->setUPnPLeaseDuration(m_spinBoxUPnPLeaseDuration.value());
+    // 服务类型（TOS）
     // Type of service
     session->setPeerToS(m_spinBoxPeerToS.value());
+    // uTP-TCP 混合模式
     // uTP-TCP mixed mode
     session->setUtpMixedMode(m_comboBoxUtpMixedMode.currentData().value<BitTorrent::MixedModeAlgorithm>());
+    // 支持国际化域名（IDN）
     // Support internationalized domain name (IDN)
     session->setIDNSupportEnabled(m_checkBoxIDNSupport.isChecked());
+    // 每个 IP 的多连接
     // multiple connections per IP
     session->setMultiConnectionsPerIpEnabled(m_checkBoxMultiConnectionsPerIp.isChecked());
+    // 验证 HTTPS Tracker 证书
     // Validate HTTPS tracker certificate
     session->setValidateHTTPSTrackerCertificate(m_checkBoxValidateHTTPSTrackerCertificate.isChecked());
+    // SSRF 缓解
     // SSRF mitigation
     session->setSSRFMitigationEnabled(m_checkBoxSSRFMitigation.isChecked());
+    // 禁止连接到特权端口上的对等节点
     // Disallow connection to peers on privileged ports
     session->setBlockPeersOnPrivilegedPorts(m_checkBoxBlockPeersOnPrivilegedPorts.isChecked());
+    // 完成后重新检查种子
     // Recheck torrents on completion
     pref->recheckTorrentsOnCompletion(m_checkBoxRecheckCompleted.isChecked());
+    // 自定义应用实例名称
     // Customize application instance name
     app()->setInstanceName(m_lineEditAppInstanceName.text());
+    // 传输列表刷新间隔
     // Transfer list refresh interval
     session->setRefreshInterval(m_spinBoxListRefresh.value());
+    // 对等节点解析
     // Peer resolution
     pref->resolvePeerCountries(m_checkBoxResolveCountries.isChecked());
     pref->resolvePeerHostNames(m_checkBoxResolveHosts.isChecked());
+    // 网络接口
     // Network interface
     session->setNetworkInterface(m_comboBoxInterface.currentData().toString());
     session->setNetworkInterfaceName((m_comboBoxInterface.currentIndex() == 0)
         ? QString()
         : m_comboBoxInterface.currentText());
+    // 接口地址
     // Interface address
+    // 构造 QHostAddress 以过滤格式错误的字符串
     // Construct a QHostAddress to filter malformed strings
     const QHostAddress ifaceAddr {m_comboBoxInterfaceAddress.currentData().toString()};
     session->setNetworkInterfaceAddress(ifaceAddr.toString());
+    // 通告 IP
     // Announce IP
+    // 构造 QHostAddress 以过滤格式错误的字符串
     // Construct a QHostAddress to filter malformed strings
     const QHostAddress addr(m_lineEditAnnounceIP.text().trimmed());
     session->setAnnounceIP(addr.toString());
+    // 通告端口
     // Announce Port
     session->setAnnouncePort(m_spinBoxAnnouncePort.value());
+    // 最大并发 HTTP 通告数
     // Max concurrent HTTP announces
     session->setMaxConcurrentHTTPAnnounces(m_spinBoxMaxConcurrentHTTPAnnounces.value());
+    // 停止 Tracker 超时
     // Stop tracker timeout
     session->setStopTrackerTimeout(m_spinBoxStopTrackerTimeout.value());
+    // 程序通知
     // Program notification
     app()->desktopIntegration()->setNotificationsEnabled(m_checkBoxProgramNotifications.isChecked());
 #ifdef QBT_USES_DBUS
     app()->desktopIntegration()->setNotificationTimeout(m_spinBoxNotificationTimeout.value());
 #endif
     app()->setTorrentAddedNotificationsEnabled(m_checkBoxTorrentAddedNotifications.isChecked());
+    // IP/端口改变时重新通告所有 Tracker
     // Reannounce to all trackers when ip/port changed
     session->setReannounceWhenAddressChangedEnabled(m_checkBoxReannounceWhenAddressChanged.isChecked());
+    // 其他 GUI 属性
     // Misc GUI properties
     app()->mainWindow()->setDownloadTrackerFavicon(m_checkBoxTrackerFavicon.isChecked());
     pref->setAddNewTorrentDialogSavePathHistoryLength(m_spinBoxSavePathHistoryLength.value());
@@ -334,43 +398,70 @@ void AdvancedSettings::saveAdvancedSettings() const
     pref->setAddNewTorrentDialogAttached(m_checkBoxAttachedAddNewTorrentDialog.isChecked());
 #endif
 
+    // Tracker 设置
     // Tracker
     pref->setTrackerPort(m_spinBoxTrackerPort.value());
     pref->setTrackerPortForwardingEnabled(m_checkBoxTrackerPortForwarding.isChecked());
     session->setTrackerEnabled(m_checkBoxTrackerStatus.isChecked());
 #if defined(Q_OS_MACOS) || defined(Q_OS_WIN)
+    // 网络标记
     // Mark-of-the-Web
     pref->setMarkOfTheWebEnabled(m_checkBoxMarkOfTheWeb.isChecked());
 #endif // Q_OS_MACOS || Q_OS_WIN
+    // 忽略 SSL 错误
     // Ignore SSL errors
     pref->setIgnoreSSLErrors(m_checkBoxIgnoreSSLErrors.isChecked());
+    // Python 可执行文件路径
     // Python executable path
     pref->setPythonExecutablePath(Path(m_pythonExecutablePath.text().trimmed()));
+    // 以暂停状态启动会话
     // Start session paused
     session->setStartPaused(m_checkBoxStartSessionPaused.isChecked());
+    // 会话关闭超时
     // Session shutdown timeout
     session->setShutdownTimeout(m_spinBoxSessionShutdownTimeout.value());
+    // 阻塞算法
     // Choking algorithm
     session->setChokingAlgorithm(m_comboBoxChokingAlgorithm.currentData().value<BitTorrent::ChokingAlgorithm>());
+    // 做种阻塞算法
     // Seed choking algorithm
     session->setSeedChokingAlgorithm(m_comboBoxSeedChokingAlgorithm.currentData().value<BitTorrent::SeedChokingAlgorithm>());
 
+    // 确认重新检查种子
+    // Confirm torrent recheck
     pref->setConfirmTorrentRecheck(m_checkBoxConfirmTorrentRecheck.isChecked());
 
+    // 确认移除所有标签
+    // Confirm remove all tags
     pref->setConfirmRemoveAllTags(m_checkBoxConfirmRemoveAllTags.isChecked());
+    // 确认从所有种子中移除 Tracker
+    // Confirm remove tracker from all torrents
     pref->setConfirmRemoveTrackerFromAllTorrents(m_checkBoxConfirmRemoveTrackerFromAllTorrents.isChecked());
 
+    // 向所有 Tracker 汇报
+    // Announce to all trackers
     session->setAnnounceToAllTrackers(m_checkBoxAnnounceAllTrackers.isChecked());
+    // 向所有层级汇报
+    // Announce to all tiers
     session->setAnnounceToAllTiers(m_checkBoxAnnounceAllTiers.isChecked());
 
+    // 对等节点轮换比例
+    // Peer turnover
     session->setPeerTurnover(m_spinBoxPeerTurnover.value());
+    // 对等节点轮换阈值
+    // Peer turnover cutoff
     session->setPeerTurnoverCutoff(m_spinBoxPeerTurnoverCutoff.value());
+    // 对等节点轮换间隔
+    // Peer turnover interval
     session->setPeerTurnoverInterval(m_spinBoxPeerTurnoverInterval.value());
+    // 单个对等节点的最大未完成请求数
     // Maximum outstanding requests to a single peer
     session->setRequestQueueSize(m_spinBoxRequestQueueSize.value());
+    // DHT 引导节点
     // DHT bootstrap nodes
     session->setDHTBootstrapNodes(m_lineEditDHTBootstrapNodes.text());
 #if defined(QBT_USES_LIBTORRENT2) && TORRENT_USE_I2P
+    // I2P 会话选项
     // I2P session options
     session->setI2PInboundQuantity(m_spinBoxI2PInboundQuantity.value());
     session->setI2POutboundQuantity(m_spinBoxI2POutboundQuantity.value());
@@ -378,6 +469,8 @@ void AdvancedSettings::saveAdvancedSettings() const
     session->setI2POutboundLength(m_spinBoxI2POutboundLength.value());
 #endif
 
+    // 种子内容移除选项
+    // Torrent content remove option
     session->setTorrentContentRemoveOption(m_comboBoxTorrentContentRemoveOption.currentData().value<BitTorrent::TorrentContentRemoveOption>());
 }
 
@@ -421,6 +514,7 @@ void AdvancedSettings::updateInterfaceAddressCombo()
         return {};
     };
 
+    // 清除所有项并重新插入
     // Clear all items and reinsert them
     m_comboBoxInterfaceAddress.clear();
     m_comboBoxInterfaceAddress.addItem(tr("All addresses"), QString());
@@ -454,6 +548,7 @@ void AdvancedSettings::updateInterfaceAddressCombo()
     }
     else
     {
+        // 未找到,为了界面一致性,添加该条目
         // not found, for the sake of UI consistency, add such entry
         m_comboBoxInterfaceAddress.addItem(currentAddress, currentAddress);
         m_comboBoxInterfaceAddress.setCurrentIndex(m_comboBoxInterfaceAddress.count() - 1);
@@ -465,6 +560,7 @@ void AdvancedSettings::loadAdvancedSettings()
     const Preferences *const pref = Preferences::instance();
     const BitTorrent::Session *const session = BitTorrent::Session::instance();
 
+    // 添加分组标题
     // add section headers
     auto *labelQbtLink = new QLabel(
         makeLink(u"https://github.com/qbittorrent/qBittorrent/wiki/Explanation-of-Options-in-qBittorrent#Advanced"
@@ -493,6 +589,7 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(TORRENT_CONTENT_REMOVE_OPTION, tr("Torrent content removing mode"), &m_comboBoxTorrentContentRemoveOption);
 
 #if defined(QBT_USES_LIBTORRENT2) && !defined(Q_OS_MACOS)
+    // 物理内存（RAM）使用限制
     // Physical memory (RAM) usage limit
     m_spinBoxMemoryWorkingSetLimit.setMinimum(1);
     m_spinBoxMemoryWorkingSetLimit.setMaximum(std::numeric_limits<int>::max());
@@ -513,18 +610,21 @@ void AdvancedSettings::loadAdvancedSettings()
         + u' ' + makeLink(u"https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/ns-processthreadsapi-memory_priority_information", u"(?)"))
         , &m_comboBoxOSMemoryPriority);
 #endif
+    // Bdecode 深度限制
     // Bdecode depth limit
     m_spinBoxBdecodeDepthLimit.setMinimum(0);
     m_spinBoxBdecodeDepthLimit.setMaximum(std::numeric_limits<int>::max());
     m_spinBoxBdecodeDepthLimit.setValue(pref->getBdecodeDepthLimit());
     addRow(BDECODE_DEPTH_LIMIT, (tr("Bdecode depth limit") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Bdecoding.html#bdecode()", u"(?)"))
             , &m_spinBoxBdecodeDepthLimit);
+    // Bdecode 令牌限制
     // Bdecode token limit
     m_spinBoxBdecodeTokenLimit.setMinimum(0);
     m_spinBoxBdecodeTokenLimit.setMaximum(std::numeric_limits<int>::max());
     m_spinBoxBdecodeTokenLimit.setValue(pref->getBdecodeTokenLimit());
     addRow(BDECODE_TOKEN_LIMIT, (tr("Bdecode token limit") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Bdecoding.html#bdecode()", u"(?)"))
             , &m_spinBoxBdecodeTokenLimit);
+    // 异步 I/O 线程数
     // Async IO threads
     m_spinBoxAsyncIOThreads.setMinimum(1);
     m_spinBoxAsyncIOThreads.setMaximum(1024);
@@ -533,6 +633,7 @@ void AdvancedSettings::loadAdvancedSettings()
             , &m_spinBoxAsyncIOThreads);
 
 #ifdef QBT_USES_LIBTORRENT2
+    // 哈希计算线程数
     // Hashing threads
     m_spinBoxHashingThreads.setMinimum(1);
     m_spinBoxHashingThreads.setMaximum(1024);
@@ -541,6 +642,7 @@ void AdvancedSettings::loadAdvancedSettings()
             , &m_spinBoxHashingThreads);
 #endif
 
+    // 文件池大小
     // File pool size
     m_spinBoxFilePoolSize.setMinimum(1);
     m_spinBoxFilePoolSize.setMaximum(std::numeric_limits<int>::max());
@@ -548,12 +650,15 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(FILE_POOL_SIZE, (tr("File pool size") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#file_pool_size", u"(?)"))
         , &m_spinBoxFilePoolSize);
 
+    // 检查种子时的内存使用
     // Checking Memory Usage
     m_spinBoxCheckingMemUsage.setMinimum(1);
+    // 在 32 位构建时,设置较低的最大值以防止崩溃
     // When build as 32bit binary, set the maximum value lower to prevent crashes.
 #ifdef QBT_APP_64BIT
     m_spinBoxCheckingMemUsage.setMaximum(1024);
 #else
+    // 从剩余的 512MiB 中最多分配 128MiB（参见下面的缓存部分）
     // Allocate at most 128MiB out of the remaining 512MiB (see the cache part below)
     m_spinBoxCheckingMemUsage.setMaximum(128);
 #endif
@@ -562,12 +667,15 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(CHECKING_MEM_USAGE, (tr("Outstanding memory when checking torrents") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#checking_mem_usage", u"(?)"))
             , &m_spinBoxCheckingMemUsage);
 #ifndef QBT_USES_LIBTORRENT2
+    // 磁盘写入缓存
     // Disk write cache
     m_spinBoxCache.setMinimum(-1);
+    // 在 32 位构建时,设置最大值小于 2GB 以防止崩溃
     // When build as 32bit binary, set the maximum at less than 2GB to prevent crashes.
 #ifdef QBT_APP_64BIT
     m_spinBoxCache.setMaximum(33554431);  // 32768GiB
 #else
+    // 分配 1536MiB,为程序其他数据在 RAM 中留出 512MiB
     // allocate 1536MiB and leave 512MiB to the rest of program data in RAM
     m_spinBoxCache.setMaximum(1536);
 #endif
@@ -577,6 +685,7 @@ void AdvancedSettings::loadAdvancedSettings()
             , this, &AdvancedSettings::updateCacheSpinSuffix);
     addRow(DISK_CACHE, (tr("Disk cache") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#cache_size", u"(?)"))
             , &m_spinBoxCache);
+    // 磁盘缓存过期时间
     // Disk cache expiry
     m_spinBoxCacheTTL.setMinimum(1);
     m_spinBoxCacheTTL.setMaximum(std::numeric_limits<int>::max());
@@ -585,6 +694,7 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(DISK_CACHE_TTL, (tr("Disk cache expiry interval") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#cache_expiry", u"(?)"))
             , &m_spinBoxCacheTTL);
 #endif
+    // 磁盘队列大小
     // Disk queue size
     m_spinBoxDiskQueueSize.setMinimum(1);
     m_spinBoxDiskQueueSize.setMaximum(std::numeric_limits<int>::max() / 1024);
@@ -593,6 +703,7 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(DISK_QUEUE_SIZE, (tr("Disk queue size") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#max_queued_disk_bytes", u"(?)"))
             , &m_spinBoxDiskQueueSize);
 #ifdef QBT_USES_LIBTORRENT2
+    // 磁盘 I/O 类型
     // Disk IO type
     m_comboBoxDiskIOType.addItem(tr("Default"), QVariant::fromValue(BitTorrent::DiskIOType::Default));
     m_comboBoxDiskIOType.addItem(tr("Memory mapped files"), QVariant::fromValue(BitTorrent::DiskIOType::MMap));
@@ -602,12 +713,14 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(DISK_IO_TYPE, tr("Disk IO type (requires restart)") + u' ' + makeLink(u"https://www.libtorrent.org/single-page-ref.html#default-disk-io-constructor", u"(?)")
            , &m_comboBoxDiskIOType);
 #endif
+    // 磁盘 I/O 读取模式
     // Disk IO read mode
     m_comboBoxDiskIOReadMode.addItem(tr("Disable OS cache"), QVariant::fromValue(BitTorrent::DiskIOReadMode::DisableOSCache));
     m_comboBoxDiskIOReadMode.addItem(tr("Enable OS cache"), QVariant::fromValue(BitTorrent::DiskIOReadMode::EnableOSCache));
     m_comboBoxDiskIOReadMode.setCurrentIndex(m_comboBoxDiskIOReadMode.findData(QVariant::fromValue(session->diskIOReadMode())));
     addRow(DISK_IO_READ_MODE, (tr("Disk IO read mode") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#disk_io_read_mode", u"(?)"))
             , &m_comboBoxDiskIOReadMode);
+    // 磁盘 I/O 写入模式
     // Disk IO write mode
     m_comboBoxDiskIOWriteMode.addItem(tr("Disable OS cache"), QVariant::fromValue(BitTorrent::DiskIOWriteMode::DisableOSCache));
     m_comboBoxDiskIOWriteMode.addItem(tr("Enable OS cache"), QVariant::fromValue(BitTorrent::DiskIOWriteMode::EnableOSCache));
@@ -618,18 +731,22 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(DISK_IO_WRITE_MODE, (tr("Disk IO write mode") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#disk_io_write_mode", u"(?)"))
             , &m_comboBoxDiskIOWriteMode);
 #ifndef QBT_USES_LIBTORRENT2
+    // 合并读写操作
     // Coalesce reads & writes
     m_checkBoxCoalesceRW.setChecked(session->isCoalesceReadWriteEnabled());
     addRow(COALESCE_RW, (tr("Coalesce reads & writes") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#coalesce_reads", u"(?)"))
             , &m_checkBoxCoalesceRW);
 #endif
+    // 数据块范围亲和性
     // Piece extent affinity
     m_checkBoxPieceExtentAffinity.setChecked(session->usePieceExtentAffinity());
     addRow(PIECE_EXTENT_AFFINITY, (tr("Use piece extent affinity") + u' ' + makeLink(u"https://libtorrent.org/single-page-ref.html#piece_extent_affinity", u"(?)")), &m_checkBoxPieceExtentAffinity);
+    // 建议模式
     // Suggest mode
     m_checkBoxSuggestMode.setChecked(session->isSuggestModeEnabled());
     addRow(SUGGEST_MODE, (tr("Send upload piece suggestions") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#suggest_mode", u"(?)"))
             , &m_checkBoxSuggestMode);
+    // 发送缓冲区水位线
     // Send buffer watermark
     m_spinBoxSendBufferWatermark.setMinimum(1);
     m_spinBoxSendBufferWatermark.setMaximum(std::numeric_limits<int>::max());
@@ -649,12 +766,14 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxSendBufferWatermarkFactor.setValue(session->sendBufferWatermarkFactor());
     addRow(SEND_BUF_WATERMARK_FACTOR, (tr("Send buffer watermark factor") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#send_buffer_watermark_factor", u"(?)"))
             , &m_spinBoxSendBufferWatermarkFactor);
+    // 每秒出站连接数
     // Outgoing connections per second
     m_spinBoxConnectionSpeed.setMinimum(0);
     m_spinBoxConnectionSpeed.setMaximum(std::numeric_limits<int>::max());
     m_spinBoxConnectionSpeed.setValue(session->connectionSpeed());
     addRow(CONNECTION_SPEED, (tr("Outgoing connections per second") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#connection_speed", u"(?)"))
             , &m_spinBoxConnectionSpeed);
+    // Socket 发送缓冲区大小
     // Socket send buffer size
     m_spinBoxSocketSendBufferSize.setMinimum(0);
     m_spinBoxSocketSendBufferSize.setMaximum(std::numeric_limits<int>::max() / 1024);
@@ -663,6 +782,7 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxSocketSendBufferSize.setSpecialValueText(tr("0 (system default)"));
     addRow(SOCKET_SEND_BUFFER_SIZE, (tr("Socket send buffer size [0: system default]") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#send_socket_buffer_size", u"(?)"))
             , &m_spinBoxSocketSendBufferSize);
+    // Socket 接收缓冲区大小
     // Socket receive buffer size
     m_spinBoxSocketReceiveBufferSize.setMinimum(0);
     m_spinBoxSocketReceiveBufferSize.setMaximum(std::numeric_limits<int>::max() / 1024);
@@ -671,12 +791,14 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxSocketReceiveBufferSize.setSpecialValueText(tr("0 (system default)"));
     addRow(SOCKET_RECEIVE_BUFFER_SIZE, (tr("Socket receive buffer size [0: system default]") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#recv_socket_buffer_size", u"(?)"))
             , &m_spinBoxSocketReceiveBufferSize);
+    // Socket 监听积压队列大小
     // Socket listen backlog size
     m_spinBoxSocketBacklogSize.setMinimum(1);
     m_spinBoxSocketBacklogSize.setMaximum(std::numeric_limits<int>::max());
     m_spinBoxSocketBacklogSize.setValue(session->socketBacklogSize());
     addRow(SOCKET_BACKLOG_SIZE, (tr("Socket backlog size") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#listen_queue_size", u"(?)"))
             , &m_spinBoxSocketBacklogSize);
+    // 保存恢复数据间隔
     // Save resume data interval
     m_spinBoxSaveResumeDataInterval.setMinimum(0);
     m_spinBoxSaveResumeDataInterval.setMaximum(std::numeric_limits<int>::max());
@@ -684,6 +806,7 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxSaveResumeDataInterval.setSuffix(tr(" min", " minutes"));
     m_spinBoxSaveResumeDataInterval.setSpecialValueText(tr("0 (disabled)"));
     addRow(SAVE_RESUME_DATA_INTERVAL, tr("Save resume data interval [0: disabled]", "How often the fastresume file is saved."), &m_spinBoxSaveResumeDataInterval);
+    // 保存统计信息间隔
     // Save statistics interval
     m_spinBoxSaveStatisticsInterval.setMinimum(0);
     m_spinBoxSaveStatisticsInterval.setMaximum(std::numeric_limits<int>::max());
@@ -691,12 +814,14 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxSaveStatisticsInterval.setSuffix(tr(" min", " minutes"));
     m_spinBoxSaveStatisticsInterval.setSpecialValueText(tr("0 (disabled)"));
     addRow(SAVE_STATISTICS_INTERVAL, tr("Save statistics interval [0: disabled]", "How often the statistics file is saved."), &m_spinBoxSaveStatisticsInterval);
+    // .torrent 文件大小限制
     // .torrent file size limit
     m_spinBoxTorrentFileSizeLimit.setMinimum(1);
     m_spinBoxTorrentFileSizeLimit.setMaximum(std::numeric_limits<int>::max() / 1024 / 1024);
     m_spinBoxTorrentFileSizeLimit.setValue(pref->getTorrentFileSizeLimit() / 1024 / 1024);
     m_spinBoxTorrentFileSizeLimit.setSuffix(tr(" MiB"));
     addRow(TORRENT_FILE_SIZE_LIMIT, tr(".torrent file size limit"), &m_spinBoxTorrentFileSizeLimit);
+    // 出站端口最小值
     // Outgoing port Min
     m_spinBoxOutgoingPortsMin.setMinimum(0);
     m_spinBoxOutgoingPortsMin.setMaximum(65535);
@@ -705,6 +830,7 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(OUTGOING_PORT_MIN, (tr("Outgoing ports (Min) [0: disabled]")
         + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#outgoing_port", u"(?)"))
         , &m_spinBoxOutgoingPortsMin);
+    // 出站端口最大值
     // Outgoing port Max
     m_spinBoxOutgoingPortsMax.setMinimum(0);
     m_spinBoxOutgoingPortsMax.setMaximum(65535);
@@ -713,6 +839,7 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(OUTGOING_PORT_MAX, (tr("Outgoing ports (Max) [0: disabled]")
         + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#outgoing_port", u"(?)"))
         , &m_spinBoxOutgoingPortsMax);
+    // UPnP 租约持续时间
     // UPnP lease duration
     m_spinBoxUPnPLeaseDuration.setMinimum(0);
     m_spinBoxUPnPLeaseDuration.setMaximum(std::numeric_limits<int>::max());
@@ -721,12 +848,14 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxUPnPLeaseDuration.setSpecialValueText(tr("0 (permanent lease)"));
     addRow(UPNP_LEASE_DURATION, (tr("UPnP lease duration [0: permanent lease]") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#upnp_lease_duration", u"(?)"))
         , &m_spinBoxUPnPLeaseDuration);
+    // 服务类型（ToS）
     // Type of service
     m_spinBoxPeerToS.setMinimum(0);
     m_spinBoxPeerToS.setMaximum(255);
     m_spinBoxPeerToS.setValue(session->peerToS());
     addRow(PEER_TOS, (tr("Type of service (ToS) for connections to peers") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#peer_tos", u"(?)"))
         , &m_spinBoxPeerToS);
+    // uTP-TCP 混合模式
     // uTP-TCP mixed mode
     m_comboBoxUtpMixedMode.addItem(tr("Prefer TCP"), QVariant::fromValue(BitTorrent::MixedModeAlgorithm::TCP));
     m_comboBoxUtpMixedMode.addItem(tr("Peer proportional (throttles TCP)"), QVariant::fromValue(BitTorrent::MixedModeAlgorithm::Proportional));
@@ -734,36 +863,44 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(UTP_MIX_MODE, (tr("%1-TCP mixed mode algorithm", "uTP-TCP mixed mode algorithm").arg(C_UTP)
             + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#mixed_mode_algorithm", u"(?)"))
             , &m_comboBoxUtpMixedMode);
+    // 支持国际化域名（IDN）
     // Support internationalized domain name (IDN)
     m_checkBoxIDNSupport.setChecked(session->isIDNSupportEnabled());
     addRow(IDN_SUPPORT, (tr("Support internationalized domain name (IDN)")
             + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#allow_idna", u"(?)"))
             , &m_checkBoxIDNSupport);
+    // 允许同一 IP 地址的多个连接
     // multiple connections per IP
     m_checkBoxMultiConnectionsPerIp.setChecked(session->multiConnectionsPerIpEnabled());
     addRow(MULTI_CONNECTIONS_PER_IP, (tr("Allow multiple connections from the same IP address")
             + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#allow_multiple_connections_per_ip", u"(?)"))
             , &m_checkBoxMultiConnectionsPerIp);
+    // 验证 HTTPS Tracker 证书
     // Validate HTTPS tracker certificate
     m_checkBoxValidateHTTPSTrackerCertificate.setChecked(session->validateHTTPSTrackerCertificate());
     addRow(VALIDATE_HTTPS_TRACKER_CERTIFICATE, (tr("Validate HTTPS tracker certificates")
             + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#validate_https_trackers", u"(?)"))
             , &m_checkBoxValidateHTTPSTrackerCertificate);
+    // SSRF 防护
     // SSRF mitigation
     m_checkBoxSSRFMitigation.setChecked(session->isSSRFMitigationEnabled());
     addRow(SSRF_MITIGATION, (tr("Server-side request forgery (SSRF) mitigation")
         + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#ssrf_mitigation", u"(?)"))
         , &m_checkBoxSSRFMitigation);
+    // 禁止连接到特权端口上的对等节点
     // Disallow connection to peers on privileged ports
     m_checkBoxBlockPeersOnPrivilegedPorts.setChecked(session->blockPeersOnPrivilegedPorts());
     addRow(BLOCK_PEERS_ON_PRIVILEGED_PORTS, (tr("Disallow connection to peers on privileged ports") + u' ' + makeLink(u"https://libtorrent.org/single-page-ref.html#no_connect_privileged_ports", u"(?)")), &m_checkBoxBlockPeersOnPrivilegedPorts);
+    // 完成时重新检查种子
     // Recheck completed torrents
     m_checkBoxRecheckCompleted.setChecked(pref->recheckTorrentsOnCompletion());
     addRow(RECHECK_COMPLETED, tr("Recheck torrents on completion"), &m_checkBoxRecheckCompleted);
+    // 自定义应用程序实例名称
     // Customize application instance name
     m_lineEditAppInstanceName.setText(app()->instanceName());
     m_lineEditAppInstanceName.setToolTip(tr("It appends the text to the window title to help distinguish qBittorent instances"));
     addRow(APP_INSTANCE_NAME, tr("Customize application instance name"), &m_lineEditAppInstanceName);
+    // 刷新间隔
     // Refresh interval
     m_spinBoxListRefresh.setMinimum(30);
     m_spinBoxListRefresh.setMaximum(99999);
@@ -771,9 +908,11 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxListRefresh.setSuffix(tr(" ms", " milliseconds"));
     m_spinBoxListRefresh.setToolTip(tr("It controls the internal state update interval which in turn will affect UI updates"));
     addRow(LIST_REFRESH, tr("Refresh interval"), &m_spinBoxListRefresh);
+    // 解析对等节点国家
     // Resolve Peer countries
     m_checkBoxResolveCountries.setChecked(pref->resolvePeerCountries());
     addRow(RESOLVE_COUNTRIES, tr("Resolve peer countries"), &m_checkBoxResolveCountries);
+    // 解析对等节点主机名
     // Resolve peer hosts
     m_checkBoxResolveHosts.setChecked(pref->resolvePeerHostNames());
     addRow(RESOLVE_HOSTS, tr("Resolve peer host names"), &m_checkBoxResolveHosts);
@@ -790,6 +929,7 @@ void AdvancedSettings::loadAdvancedSettings()
     }
     else
     {
+        // 保存的网络接口不存在,显示它
         // Saved interface does not exist, show it
         m_comboBoxInterface.addItem(session->networkInterfaceName(), currentInterface);
         m_comboBoxInterface.setCurrentIndex(m_comboBoxInterface.count() - 1);
@@ -798,14 +938,17 @@ void AdvancedSettings::loadAdvancedSettings()
     connect(&m_comboBoxInterface, qOverload<int>(&QComboBox::currentIndexChanged)
         , this, &AdvancedSettings::updateInterfaceAddressCombo);
     addRow(NETWORK_IFACE, tr("Network interface"), &m_comboBoxInterface);
+    // 网络接口地址
     // Network interface address
     updateInterfaceAddressCombo();
     addRow(NETWORK_IFACE_ADDRESS, tr("Optional IP address to bind to"), &m_comboBoxInterfaceAddress);
+    // 向 Tracker 汇报的 IP 地址
     // Announce IP
     m_lineEditAnnounceIP.setText(session->announceIP());
     addRow(ANNOUNCE_IP, (tr("IP address reported to trackers (requires restart)")
         + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#announce_ip", u"(?)"))
         , &m_lineEditAnnounceIP);
+    // 向 Tracker 汇报的端口
     // Announce port
     m_spinBoxAnnouncePort.setMinimum(0);
     m_spinBoxAnnouncePort.setMaximum(65535);
@@ -813,11 +956,13 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(ANNOUNCE_PORT, (tr("Port reported to trackers (requires restart) [0: listening port]")
         + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#announce_port", u"(?)"))
         , &m_spinBoxAnnouncePort);
+    // 最大并发 HTTP 汇报数
     // Max concurrent HTTP announces
     m_spinBoxMaxConcurrentHTTPAnnounces.setMaximum(std::numeric_limits<int>::max());
     m_spinBoxMaxConcurrentHTTPAnnounces.setValue(session->maxConcurrentHTTPAnnounces());
     addRow(MAX_CONCURRENT_HTTP_ANNOUNCES, (tr("Max concurrent HTTP announces") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#max_concurrent_http_announces", u"(?)"))
            , &m_spinBoxMaxConcurrentHTTPAnnounces);
+    // 停止 Tracker 超时时间
     // Stop tracker timeout
     m_spinBoxStopTrackerTimeout.setMaximum(std::numeric_limits<int>::max());
     m_spinBoxStopTrackerTimeout.setValue(session->stopTrackerTimeout());
@@ -825,13 +970,16 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxStopTrackerTimeout.setSpecialValueText(tr("0 (disabled)"));
     addRow(STOP_TRACKER_TIMEOUT, (tr("Stop tracker timeout [0: disabled]") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#stop_tracker_timeout", u"(?)"))
            , &m_spinBoxStopTrackerTimeout);
+    // 程序通知
     // Program notifications
     m_checkBoxProgramNotifications.setChecked(app()->desktopIntegration()->isNotificationsEnabled());
     addRow(PROGRAM_NOTIFICATIONS, tr("Display notifications"), &m_checkBoxProgramNotifications);
+    // 种子添加通知
     // Torrent added notifications
     m_checkBoxTorrentAddedNotifications.setChecked(app()->isTorrentAddedNotificationsEnabled());
     addRow(TORRENT_ADDED_NOTIFICATIONS, tr("Display notifications for added torrents"), &m_checkBoxTorrentAddedNotifications);
 #ifdef QBT_USES_DBUS
+    // 通知超时时间
     // Notification timeout
     m_spinBoxNotificationTimeout.setMinimum(-1);
     m_spinBoxNotificationTimeout.setMaximum(std::numeric_limits<int>::max());
@@ -841,20 +989,25 @@ void AdvancedSettings::loadAdvancedSettings()
     updateNotificationTimeoutSuffix(m_spinBoxNotificationTimeout.value());
     addRow(NOTIFICATION_TIMEOUT, tr("Notification timeout [0: infinite, -1: system default]"), &m_spinBoxNotificationTimeout);
 #endif
+    // IP 或端口改变时向所有 Tracker 重新汇报
     // Reannounce to all trackers when ip/port changed
     m_checkBoxReannounceWhenAddressChanged.setChecked(session->isReannounceWhenAddressChangedEnabled());
     addRow(REANNOUNCE_WHEN_ADDRESS_CHANGED, tr("Reannounce to all trackers when IP or port changed"), &m_checkBoxReannounceWhenAddressChanged);
+    // 下载 Tracker 的网站图标
     // Download tracker's favicon
     m_checkBoxTrackerFavicon.setChecked(app()->mainWindow()->isDownloadTrackerFavicon());
     addRow(DOWNLOAD_TRACKER_FAVICON, tr("Download tracker's favicon"), &m_checkBoxTrackerFavicon);
+    // 保存路径历史记录长度
     // Save path history length
     m_spinBoxSavePathHistoryLength.setRange(0, 99);
     m_spinBoxSavePathHistoryLength.setValue(pref->addNewTorrentDialogSavePathHistoryLength());
     addRow(SAVE_PATH_HISTORY_LENGTH, tr("Save path history length"), &m_spinBoxSavePathHistoryLength);
+    // 启用速度图表
     // Enable speed graphs
     m_checkBoxSpeedWidgetEnabled.setChecked(pref->isSpeedWidgetEnabled());
     addRow(ENABLE_SPEED_WIDGET, tr("Enable speed graphs"), &m_checkBoxSpeedWidgetEnabled);
 #ifndef Q_OS_MACOS
+    // 在菜单中启用图标
     // Enable icons in menus
     m_checkBoxIconsInMenusEnabled.setChecked(pref->iconsInMenusEnabled());
     addRow(ENABLE_ICONS_IN_MENUS, tr("Enable icons in menus"), &m_checkBoxIconsInMenusEnabled);
@@ -862,18 +1015,22 @@ void AdvancedSettings::loadAdvancedSettings()
     m_checkBoxAttachedAddNewTorrentDialog.setChecked(pref->isAddNewTorrentDialogAttached());
     addRow(USE_ATTACHED_ADD_NEW_TORRENT_DIALOG, tr("Attach \"Add new torrent\" dialog to main window"), &m_checkBoxAttachedAddNewTorrentDialog);
 #endif
+    // Tracker 状态
     // Tracker State
     m_checkBoxTrackerStatus.setChecked(session->isTrackerEnabled());
     addRow(TRACKER_STATUS, tr("Enable embedded tracker"), &m_checkBoxTrackerStatus);
+    // Tracker 端口
     // Tracker port
     m_spinBoxTrackerPort.setMinimum(1);
     m_spinBoxTrackerPort.setMaximum(65535);
     m_spinBoxTrackerPort.setValue(pref->getTrackerPort());
     addRow(TRACKER_PORT, tr("Embedded tracker port"), &m_spinBoxTrackerPort);
+    // Tracker 端口转发
     // Tracker port forwarding
     m_checkBoxTrackerPortForwarding.setChecked(pref->isTrackerPortForwardingEnabled());
     addRow(TRACKER_PORT_FORWARDING, tr("Enable port forwarding for embedded tracker"), &m_checkBoxTrackerPortForwarding);
 #if defined(Q_OS_MACOS) || defined(Q_OS_WIN)
+    // 网络标记
     // Mark-of-the-Web
 #ifdef Q_OS_MACOS
     const QString motwLabel = tr("Enable quarantine for downloaded files");
@@ -883,17 +1040,21 @@ void AdvancedSettings::loadAdvancedSettings()
     m_checkBoxMarkOfTheWeb.setChecked(pref->isMarkOfTheWebEnabled());
     addRow(ENABLE_MARK_OF_THE_WEB, motwLabel, &m_checkBoxMarkOfTheWeb);
 #endif // Q_OS_MACOS || Q_OS_WIN
+    // 忽略 SSL 错误
     // Ignore SSL errors
     m_checkBoxIgnoreSSLErrors.setChecked(pref->isIgnoreSSLErrors());
     m_checkBoxIgnoreSSLErrors.setToolTip(tr("Affects certificate validation and non-torrent protocol activities (e.g. RSS feeds, program updates, torrent files, geoip db, etc)"));
     addRow(IGNORE_SSL_ERRORS, tr("Ignore SSL errors"), &m_checkBoxIgnoreSSLErrors);
+    // Python 可执行文件路径
     // Python executable path
     m_pythonExecutablePath.setPlaceholderText(tr("(Auto detect if empty)"));
     m_pythonExecutablePath.setText(pref->getPythonExecutablePath().toString());
     addRow(PYTHON_EXECUTABLE_PATH, tr("Python executable path (may require restart)"), &m_pythonExecutablePath);
+    // 以暂停状态启动会话
     // Start session paused
     m_checkBoxStartSessionPaused.setChecked(session->isStartPaused());
     addRow(START_SESSION_PAUSED, tr("Start BitTorrent session in paused state"), &m_checkBoxStartSessionPaused);
+    // 会话关闭超时时间
     // Session shutdown timeout
     m_spinBoxSessionShutdownTimeout.setMinimum(-1);
     m_spinBoxSessionShutdownTimeout.setMaximum(std::numeric_limits<int>::max());
@@ -902,12 +1063,14 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxSessionShutdownTimeout.setSpecialValueText(tr("-1 (unlimited)"));
     m_spinBoxSessionShutdownTimeout.setToolTip(u"Sets the timeout for the session to be shut down gracefully, at which point it will be forcibly terminated.<br>Note that this does not apply to the saving resume data time."_s);
     addRow(SESSION_SHUTDOWN_TIMEOUT, tr("BitTorrent session shutdown timeout [-1: unlimited]"), &m_spinBoxSessionShutdownTimeout);
+    // 阻塞算法
     // Choking algorithm
     m_comboBoxChokingAlgorithm.addItem(tr("Fixed slots"), QVariant::fromValue(BitTorrent::ChokingAlgorithm::FixedSlots));
     m_comboBoxChokingAlgorithm.addItem(tr("Upload rate based"), QVariant::fromValue(BitTorrent::ChokingAlgorithm::RateBased));
     m_comboBoxChokingAlgorithm.setCurrentIndex(m_comboBoxChokingAlgorithm.findData(QVariant::fromValue(session->chokingAlgorithm())));
     addRow(CHOKING_ALGORITHM, (tr("Upload slots behavior") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#choking_algorithm", u"(?)"))
             , &m_comboBoxChokingAlgorithm);
+    // 做种阻塞算法
     // Seed choking algorithm
     m_comboBoxSeedChokingAlgorithm.addItem(tr("Round-robin"), QVariant::fromValue(BitTorrent::SeedChokingAlgorithm::RoundRobin));
     m_comboBoxSeedChokingAlgorithm.addItem(tr("Fastest upload"), QVariant::fromValue(BitTorrent::SeedChokingAlgorithm::FastestUpload));
@@ -916,24 +1079,29 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(SEED_CHOKING_ALGORITHM, (tr("Upload choking algorithm") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#seed_choking_algorithm", u"(?)"))
             , &m_comboBoxSeedChokingAlgorithm);
 
+    // 种子重新检查确认
     // Torrent recheck confirmation
     m_checkBoxConfirmTorrentRecheck.setChecked(pref->confirmTorrentRecheck());
     addRow(CONFIRM_RECHECK_TORRENT, tr("Confirm torrent recheck"), &m_checkBoxConfirmTorrentRecheck);
 
+    // 移除所有标签确认
     // Remove all tags confirmation
     m_checkBoxConfirmRemoveAllTags.setChecked(pref->confirmRemoveAllTags());
     addRow(CONFIRM_REMOVE_ALL_TAGS, tr("Confirm removal of all tags"), &m_checkBoxConfirmRemoveAllTags);
 
+    // 从所有种子中移除 Tracker 确认
     // Remove tracker from all torrents confirmation
     m_checkBoxConfirmRemoveTrackerFromAllTorrents.setChecked(pref->confirmRemoveTrackerFromAllTorrents());
     addRow(CONFIRM_REMOVE_TRACKER_FROM_ALL_TORRENTS, tr("Confirm removal of tracker from all torrents"), &m_checkBoxConfirmRemoveTrackerFromAllTorrents);
 
+    // 向层级中的所有 Tracker 汇报
     // Announce to all trackers in a tier
     m_checkBoxAnnounceAllTrackers.setChecked(session->announceToAllTrackers());
     addRow(ANNOUNCE_ALL_TRACKERS, (tr("Always announce to all trackers in a tier")
         + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#announce_to_all_trackers", u"(?)"))
         , &m_checkBoxAnnounceAllTrackers);
 
+    // 向所有层级汇报
     // Announce to all tiers
     m_checkBoxAnnounceAllTiers.setChecked(session->announceToAllTiers());
     addRow(ANNOUNCE_ALL_TIERS, (tr("Always announce to all tiers")
@@ -958,18 +1126,21 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxPeerTurnoverInterval.setValue(session->peerTurnoverInterval());
     addRow(PEER_TURNOVER_INTERVAL, (tr("Peer turnover disconnect interval") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#peer_turnover", u"(?)"))
             , &m_spinBoxPeerTurnoverInterval);
+    // 单个对等节点的最大未完成请求数
     // Maximum outstanding requests to a single peer
     m_spinBoxRequestQueueSize.setMinimum(1);
     m_spinBoxRequestQueueSize.setMaximum(std::numeric_limits<int>::max());
     m_spinBoxRequestQueueSize.setValue(session->requestQueueSize());
     addRow(REQUEST_QUEUE_SIZE, (tr("Maximum outstanding requests to a single peer") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#max_out_request_queue", u"(?)"))
             , &m_spinBoxRequestQueueSize);
+    // DHT 引导节点
     // DHT bootstrap nodes
     m_lineEditDHTBootstrapNodes.setPlaceholderText(tr("Resets to default if empty"));
     m_lineEditDHTBootstrapNodes.setText(session->getDHTBootstrapNodes());
     addRow(DHT_BOOTSTRAP_NODES, (tr("DHT bootstrap nodes") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#dht_bootstrap_nodes", u"(?)"))
         , &m_lineEditDHTBootstrapNodes);
 #if defined(QBT_USES_LIBTORRENT2) && TORRENT_USE_I2P
+    // I2P 会话选项
     // I2P session options
     m_spinBoxI2PInboundQuantity.setMinimum(1);
     m_spinBoxI2PInboundQuantity.setMaximum(16);
