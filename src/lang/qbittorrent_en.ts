@@ -668,711 +668,711 @@
 <context>
     <name>AdvancedSettings</name>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="392"/>
-        <location filename="../gui/advancedsettings.cpp" line="499"/>
-        <location filename="../gui/advancedsettings.cpp" line="561"/>
-        <location filename="../gui/advancedsettings.cpp" line="698"/>
+        <location filename="../gui/advancedsettings.cpp" line="497"/>
+        <location filename="../gui/advancedsettings.cpp" line="608"/>
+        <location filename="../gui/advancedsettings.cpp" line="678"/>
+        <location filename="../gui/advancedsettings.cpp" line="834"/>
         <source> MiB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="762"/>
+        <location filename="../gui/advancedsettings.cpp" line="909"/>
         <source>Recheck torrents on completion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="404"/>
-        <location filename="../gui/advancedsettings.cpp" line="771"/>
+        <location filename="../gui/advancedsettings.cpp" line="509"/>
+        <location filename="../gui/advancedsettings.cpp" line="920"/>
         <source> ms</source>
         <comment> milliseconds</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="191"/>
+        <location filename="../gui/advancedsettings.cpp" line="212"/>
         <source>Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="191"/>
+        <location filename="../gui/advancedsettings.cpp" line="212"/>
         <source>Value</source>
         <comment>Value set for this setting</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="388"/>
+        <location filename="../gui/advancedsettings.cpp" line="493"/>
         <source> (disabled)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="390"/>
+        <location filename="../gui/advancedsettings.cpp" line="495"/>
         <source> (auto)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="684"/>
-        <location filename="../gui/advancedsettings.cpp" line="691"/>
+        <location filename="../gui/advancedsettings.cpp" line="818"/>
+        <location filename="../gui/advancedsettings.cpp" line="826"/>
         <source> min</source>
         <comment> minutes</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="426"/>
+        <location filename="../gui/advancedsettings.cpp" line="532"/>
         <source>All addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="474"/>
+        <location filename="../gui/advancedsettings.cpp" line="582"/>
         <source>qBittorrent Section</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="471"/>
-        <location filename="../gui/advancedsettings.cpp" line="479"/>
+        <location filename="../gui/advancedsettings.cpp" line="579"/>
+        <location filename="../gui/advancedsettings.cpp" line="587"/>
         <source>Open documentation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="427"/>
+        <location filename="../gui/advancedsettings.cpp" line="533"/>
         <source>All IPv4 addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="428"/>
+        <location filename="../gui/advancedsettings.cpp" line="534"/>
         <source>All IPv6 addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="482"/>
+        <location filename="../gui/advancedsettings.cpp" line="590"/>
         <source>libtorrent Section</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="485"/>
+        <location filename="../gui/advancedsettings.cpp" line="593"/>
         <source>Fastresume files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="486"/>
+        <location filename="../gui/advancedsettings.cpp" line="594"/>
         <source>SQLite database (experimental)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="488"/>
+        <location filename="../gui/advancedsettings.cpp" line="596"/>
         <source>Resume data storage type (requires restart)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="506"/>
+        <location filename="../gui/advancedsettings.cpp" line="615"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="507"/>
+        <location filename="../gui/advancedsettings.cpp" line="616"/>
         <source>Below normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="508"/>
+        <location filename="../gui/advancedsettings.cpp" line="617"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="509"/>
+        <location filename="../gui/advancedsettings.cpp" line="618"/>
         <source>Low</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="510"/>
+        <location filename="../gui/advancedsettings.cpp" line="619"/>
         <source>Very low</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="502"/>
+        <location filename="../gui/advancedsettings.cpp" line="611"/>
         <source>Physical memory (RAM) usage limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="532"/>
+        <location filename="../gui/advancedsettings.cpp" line="644"/>
         <source>Asynchronous I/O threads</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="540"/>
+        <location filename="../gui/advancedsettings.cpp" line="653"/>
         <source>Hashing threads</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="548"/>
+        <location filename="../gui/advancedsettings.cpp" line="662"/>
         <source>File pool size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="562"/>
+        <location filename="../gui/advancedsettings.cpp" line="679"/>
         <source>Outstanding memory when checking torrents</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="578"/>
+        <location filename="../gui/advancedsettings.cpp" line="698"/>
         <source>Disk cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="584"/>
-        <location filename="../gui/advancedsettings.cpp" line="720"/>
-        <location filename="../gui/advancedsettings.cpp" line="824"/>
-        <location filename="../gui/advancedsettings.cpp" line="957"/>
+        <location filename="../gui/advancedsettings.cpp" line="705"/>
+        <location filename="../gui/advancedsettings.cpp" line="859"/>
+        <location filename="../gui/advancedsettings.cpp" line="981"/>
+        <location filename="../gui/advancedsettings.cpp" line="1138"/>
         <source> s</source>
         <comment> seconds</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="585"/>
+        <location filename="../gui/advancedsettings.cpp" line="706"/>
         <source>Disk cache expiry interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="593"/>
+        <location filename="../gui/advancedsettings.cpp" line="715"/>
         <source>Disk queue size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="607"/>
-        <location filename="../gui/advancedsettings.cpp" line="613"/>
+        <location filename="../gui/advancedsettings.cpp" line="731"/>
+        <location filename="../gui/advancedsettings.cpp" line="738"/>
         <source>Enable OS cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="623"/>
+        <location filename="../gui/advancedsettings.cpp" line="749"/>
         <source>Coalesce reads &amp; writes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="628"/>
+        <location filename="../gui/advancedsettings.cpp" line="755"/>
         <source>Use piece extent affinity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="631"/>
+        <location filename="../gui/advancedsettings.cpp" line="759"/>
         <source>Send upload piece suggestions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="685"/>
-        <location filename="../gui/advancedsettings.cpp" line="692"/>
-        <location filename="../gui/advancedsettings.cpp" line="704"/>
-        <location filename="../gui/advancedsettings.cpp" line="712"/>
-        <location filename="../gui/advancedsettings.cpp" line="825"/>
+        <location filename="../gui/advancedsettings.cpp" line="819"/>
+        <location filename="../gui/advancedsettings.cpp" line="827"/>
+        <location filename="../gui/advancedsettings.cpp" line="841"/>
+        <location filename="../gui/advancedsettings.cpp" line="850"/>
+        <location filename="../gui/advancedsettings.cpp" line="982"/>
         <source>0 (disabled)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="686"/>
+        <location filename="../gui/advancedsettings.cpp" line="820"/>
         <source>Save resume data interval [0: disabled]</source>
         <comment>How often the fastresume file is saved.</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="705"/>
+        <location filename="../gui/advancedsettings.cpp" line="842"/>
         <source>Outgoing ports (Min) [0: disabled]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="713"/>
+        <location filename="../gui/advancedsettings.cpp" line="851"/>
         <source>Outgoing ports (Max) [0: disabled]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="721"/>
+        <location filename="../gui/advancedsettings.cpp" line="860"/>
         <source>0 (permanent lease)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="722"/>
+        <location filename="../gui/advancedsettings.cpp" line="861"/>
         <source>UPnP lease duration [0: permanent lease]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="826"/>
+        <location filename="../gui/advancedsettings.cpp" line="983"/>
         <source>Stop tracker timeout [0: disabled]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="842"/>
+        <location filename="../gui/advancedsettings.cpp" line="1002"/>
         <source>Notification timeout [0: infinite, -1: system default]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="965"/>
+        <location filename="../gui/advancedsettings.cpp" line="1147"/>
         <source>Maximum outstanding requests to a single peer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="592"/>
-        <location filename="../gui/advancedsettings.cpp" line="636"/>
-        <location filename="../gui/advancedsettings.cpp" line="642"/>
-        <location filename="../gui/advancedsettings.cpp" line="662"/>
-        <location filename="../gui/advancedsettings.cpp" line="670"/>
+        <location filename="../gui/advancedsettings.cpp" line="714"/>
+        <location filename="../gui/advancedsettings.cpp" line="765"/>
+        <location filename="../gui/advancedsettings.cpp" line="771"/>
+        <location filename="../gui/advancedsettings.cpp" line="793"/>
+        <location filename="../gui/advancedsettings.cpp" line="802"/>
         <source> KiB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="400"/>
+        <location filename="../gui/advancedsettings.cpp" line="505"/>
         <source> (infinite)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="402"/>
+        <location filename="../gui/advancedsettings.cpp" line="507"/>
         <source> (system default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="490"/>
+        <location filename="../gui/advancedsettings.cpp" line="598"/>
         <source>Delete files permanently</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="491"/>
+        <location filename="../gui/advancedsettings.cpp" line="599"/>
         <source>Move files to trash (if possible)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="493"/>
+        <location filename="../gui/advancedsettings.cpp" line="601"/>
         <source>Torrent content removing mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="500"/>
+        <location filename="../gui/advancedsettings.cpp" line="609"/>
         <source>This option is less effective on Linux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="512"/>
+        <location filename="../gui/advancedsettings.cpp" line="621"/>
         <source>Process memory priority</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="520"/>
+        <location filename="../gui/advancedsettings.cpp" line="630"/>
         <source>Bdecode depth limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="526"/>
+        <location filename="../gui/advancedsettings.cpp" line="637"/>
         <source>Bdecode token limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="597"/>
+        <location filename="../gui/advancedsettings.cpp" line="720"/>
         <source>Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="598"/>
+        <location filename="../gui/advancedsettings.cpp" line="721"/>
         <source>Memory mapped files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="599"/>
+        <location filename="../gui/advancedsettings.cpp" line="722"/>
         <source>POSIX-compliant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="600"/>
+        <location filename="../gui/advancedsettings.cpp" line="723"/>
         <source>Simple pread/pwrite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="602"/>
+        <location filename="../gui/advancedsettings.cpp" line="725"/>
         <source>Disk IO type (requires restart)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="606"/>
-        <location filename="../gui/advancedsettings.cpp" line="612"/>
+        <location filename="../gui/advancedsettings.cpp" line="730"/>
+        <location filename="../gui/advancedsettings.cpp" line="737"/>
         <source>Disable OS cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="609"/>
+        <location filename="../gui/advancedsettings.cpp" line="733"/>
         <source>Disk IO read mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="615"/>
+        <location filename="../gui/advancedsettings.cpp" line="740"/>
         <source>Write-through</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="618"/>
+        <location filename="../gui/advancedsettings.cpp" line="743"/>
         <source>Disk IO write mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="638"/>
+        <location filename="../gui/advancedsettings.cpp" line="767"/>
         <source>Send buffer watermark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="644"/>
+        <location filename="../gui/advancedsettings.cpp" line="773"/>
         <source>Send buffer low watermark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="650"/>
+        <location filename="../gui/advancedsettings.cpp" line="779"/>
         <source>Send buffer watermark factor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="656"/>
+        <location filename="../gui/advancedsettings.cpp" line="786"/>
         <source>Outgoing connections per second</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="663"/>
-        <location filename="../gui/advancedsettings.cpp" line="671"/>
+        <location filename="../gui/advancedsettings.cpp" line="794"/>
+        <location filename="../gui/advancedsettings.cpp" line="803"/>
         <source>0 (system default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="664"/>
+        <location filename="../gui/advancedsettings.cpp" line="795"/>
         <source>Socket send buffer size [0: system default]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="672"/>
+        <location filename="../gui/advancedsettings.cpp" line="804"/>
         <source>Socket receive buffer size [0: system default]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="678"/>
+        <location filename="../gui/advancedsettings.cpp" line="811"/>
         <source>Socket backlog size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="693"/>
+        <location filename="../gui/advancedsettings.cpp" line="828"/>
         <source>Save statistics interval [0: disabled]</source>
         <comment>How often the statistics file is saved.</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="699"/>
+        <location filename="../gui/advancedsettings.cpp" line="835"/>
         <source>.torrent file size limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="728"/>
+        <location filename="../gui/advancedsettings.cpp" line="868"/>
         <source>Type of service (ToS) for connections to peers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="731"/>
+        <location filename="../gui/advancedsettings.cpp" line="872"/>
         <source>Prefer TCP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="732"/>
+        <location filename="../gui/advancedsettings.cpp" line="873"/>
         <source>Peer proportional (throttles TCP)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="739"/>
+        <location filename="../gui/advancedsettings.cpp" line="881"/>
         <source>Support internationalized domain name (IDN)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="744"/>
+        <location filename="../gui/advancedsettings.cpp" line="887"/>
         <source>Allow multiple connections from the same IP address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="749"/>
+        <location filename="../gui/advancedsettings.cpp" line="893"/>
         <source>Validate HTTPS tracker certificates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="754"/>
+        <location filename="../gui/advancedsettings.cpp" line="899"/>
         <source>Server-side request forgery (SSRF) mitigation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="759"/>
+        <location filename="../gui/advancedsettings.cpp" line="905"/>
         <source>Disallow connection to peers on privileged ports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="765"/>
+        <location filename="../gui/advancedsettings.cpp" line="913"/>
         <source>It appends the text to the window title to help distinguish qBittorent instances</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="766"/>
+        <location filename="../gui/advancedsettings.cpp" line="914"/>
         <source>Customize application instance name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="772"/>
+        <location filename="../gui/advancedsettings.cpp" line="921"/>
         <source>It controls the internal state update interval which in turn will affect UI updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="773"/>
+        <location filename="../gui/advancedsettings.cpp" line="922"/>
         <source>Refresh interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="779"/>
+        <location filename="../gui/advancedsettings.cpp" line="930"/>
         <source>Resolve peer host names</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="806"/>
+        <location filename="../gui/advancedsettings.cpp" line="960"/>
         <source>IP address reported to trackers (requires restart)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="813"/>
+        <location filename="../gui/advancedsettings.cpp" line="968"/>
         <source>Port reported to trackers (requires restart) [0: listening port]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="846"/>
+        <location filename="../gui/advancedsettings.cpp" line="1007"/>
         <source>Reannounce to all trackers when IP or port changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="860"/>
+        <location filename="../gui/advancedsettings.cpp" line="1025"/>
         <source>Enable icons in menus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="863"/>
+        <location filename="../gui/advancedsettings.cpp" line="1028"/>
         <source>Attach &quot;Add new torrent&quot; dialog to main window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="875"/>
+        <location filename="../gui/advancedsettings.cpp" line="1043"/>
         <source>Enable port forwarding for embedded tracker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="879"/>
+        <location filename="../gui/advancedsettings.cpp" line="1048"/>
         <source>Enable quarantine for downloaded files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="881"/>
+        <location filename="../gui/advancedsettings.cpp" line="1050"/>
         <source>Enable Mark-of-the-Web (MOTW) for downloaded files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="888"/>
+        <location filename="../gui/advancedsettings.cpp" line="1058"/>
         <source>Affects certificate validation and non-torrent protocol activities (e.g. RSS feeds, program updates, torrent files, geoip db, etc)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="889"/>
+        <location filename="../gui/advancedsettings.cpp" line="1059"/>
         <source>Ignore SSL errors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="891"/>
+        <location filename="../gui/advancedsettings.cpp" line="1062"/>
         <source>(Auto detect if empty)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="893"/>
+        <location filename="../gui/advancedsettings.cpp" line="1064"/>
         <source>Python executable path (may require restart)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="896"/>
+        <location filename="../gui/advancedsettings.cpp" line="1068"/>
         <source>Start BitTorrent session in paused state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="901"/>
+        <location filename="../gui/advancedsettings.cpp" line="1074"/>
         <source> sec</source>
         <comment> seconds</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="902"/>
+        <location filename="../gui/advancedsettings.cpp" line="1075"/>
         <source>-1 (unlimited)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="904"/>
+        <location filename="../gui/advancedsettings.cpp" line="1077"/>
         <source>BitTorrent session shutdown timeout [-1: unlimited]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="929"/>
+        <location filename="../gui/advancedsettings.cpp" line="1108"/>
         <source>Confirm removal of tracker from all torrents</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="947"/>
+        <location filename="../gui/advancedsettings.cpp" line="1128"/>
         <source>Peer turnover disconnect percentage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="953"/>
+        <location filename="../gui/advancedsettings.cpp" line="1134"/>
         <source>Peer turnover threshold percentage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="959"/>
+        <location filename="../gui/advancedsettings.cpp" line="1140"/>
         <source>Peer turnover disconnect interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="968"/>
+        <location filename="../gui/advancedsettings.cpp" line="1151"/>
         <source>Resets to default if empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="970"/>
+        <location filename="../gui/advancedsettings.cpp" line="1153"/>
         <source>DHT bootstrap nodes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="977"/>
+        <location filename="../gui/advancedsettings.cpp" line="1161"/>
         <source>I2P inbound quantity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="982"/>
+        <location filename="../gui/advancedsettings.cpp" line="1166"/>
         <source>I2P outbound quantity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="987"/>
+        <location filename="../gui/advancedsettings.cpp" line="1171"/>
         <source>I2P inbound length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="992"/>
+        <location filename="../gui/advancedsettings.cpp" line="1176"/>
         <source>I2P outbound length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="830"/>
+        <location filename="../gui/advancedsettings.cpp" line="988"/>
         <source>Display notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="833"/>
+        <location filename="../gui/advancedsettings.cpp" line="992"/>
         <source>Display notifications for added torrents</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="849"/>
+        <location filename="../gui/advancedsettings.cpp" line="1011"/>
         <source>Download tracker&apos;s favicon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="853"/>
+        <location filename="../gui/advancedsettings.cpp" line="1016"/>
         <source>Save path history length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="856"/>
+        <location filename="../gui/advancedsettings.cpp" line="1020"/>
         <source>Enable speed graphs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="906"/>
+        <location filename="../gui/advancedsettings.cpp" line="1081"/>
         <source>Fixed slots</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="907"/>
+        <location filename="../gui/advancedsettings.cpp" line="1082"/>
         <source>Upload rate based</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="909"/>
+        <location filename="../gui/advancedsettings.cpp" line="1084"/>
         <source>Upload slots behavior</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="912"/>
+        <location filename="../gui/advancedsettings.cpp" line="1088"/>
         <source>Round-robin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="913"/>
+        <location filename="../gui/advancedsettings.cpp" line="1089"/>
         <source>Fastest upload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="914"/>
+        <location filename="../gui/advancedsettings.cpp" line="1090"/>
         <source>Anti-leech</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="916"/>
+        <location filename="../gui/advancedsettings.cpp" line="1092"/>
         <source>Upload choking algorithm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="921"/>
+        <location filename="../gui/advancedsettings.cpp" line="1098"/>
         <source>Confirm torrent recheck</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="925"/>
+        <location filename="../gui/advancedsettings.cpp" line="1103"/>
         <source>Confirm removal of all tags</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="933"/>
+        <location filename="../gui/advancedsettings.cpp" line="1113"/>
         <source>Always announce to all trackers in a tier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="939"/>
+        <location filename="../gui/advancedsettings.cpp" line="1120"/>
         <source>Always announce to all tiers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="781"/>
+        <location filename="../gui/advancedsettings.cpp" line="932"/>
         <source>Any interface</source>
         <comment>i.e. Any network interface</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="734"/>
+        <location filename="../gui/advancedsettings.cpp" line="875"/>
         <source>%1-TCP mixed mode algorithm</source>
         <comment>uTP-TCP mixed mode algorithm</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="776"/>
+        <location filename="../gui/advancedsettings.cpp" line="926"/>
         <source>Resolve peer countries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="800"/>
+        <location filename="../gui/advancedsettings.cpp" line="952"/>
         <source>Network interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="803"/>
+        <location filename="../gui/advancedsettings.cpp" line="956"/>
         <source>Optional IP address to bind to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="819"/>
+        <location filename="../gui/advancedsettings.cpp" line="975"/>
         <source>Max concurrent HTTP announces</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="867"/>
+        <location filename="../gui/advancedsettings.cpp" line="1033"/>
         <source>Enable embedded tracker</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/advancedsettings.cpp" line="872"/>
+        <location filename="../gui/advancedsettings.cpp" line="1039"/>
         <source>Embedded tracker port</source>
         <translation type="unfinished"></translation>
     </message>
