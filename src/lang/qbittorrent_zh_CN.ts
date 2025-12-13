@@ -1376,6 +1376,21 @@
         <source>Embedded tracker port</source>
         <translation>内置 Tracker 端口</translation>
     </message>
+    <message>
+        <location filename="../gui/advancedsettings.cpp" line="1181"/>
+        <source>Fake Upload Section</source>
+        <translation>伪造上传部分</translation>
+    </message>
+    <message>
+        <location filename="../gui/advancedsettings.cpp" line="1192"/>
+        <source>Fake upload ratio multiplier</source>
+        <translation>伪造上传倍数</translation>
+    </message>
+    <message>
+        <location filename="../gui/advancedsettings.cpp" line="1196"/>
+        <source>Fake upload ratio randomization</source>
+        <translation>伪造上传倍数随机化</translation>
+    </message>
 </context>
 <context>
     <name>AppController</name>
