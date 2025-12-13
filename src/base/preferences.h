@@ -289,6 +289,10 @@ public:
     void setDontConfirmAutoExit(bool dontConfirmAutoExit);
     bool recheckTorrentsOnCompletion() const;
     void recheckTorrentsOnCompletion(bool recheck);
+    int getFakeUploadRatio() const;
+    void setFakeUploadRatio(int ratio);
+    bool isFakeUploadRatioRandomizationEnabled() const;
+    void setFakeUploadRatioRandomizationEnabled(bool enabled);
     bool resolvePeerCountries() const;
     void resolvePeerCountries(bool resolve);
     bool resolvePeerHostNames() const;

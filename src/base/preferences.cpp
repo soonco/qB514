@@ -1304,6 +1304,32 @@ void Preferences::recheckTorrentsOnCompletion(const bool recheck)
     setValue(u"Preferences/Advanced/RecheckOnCompletion"_s, recheck);
 }
 
+int Preferences::getFakeUploadRatio() const
+{
+    return value(u"Preferences/Advanced/FakeUploadRatio"_s, 1);
+}
+
+void Preferences::setFakeUploadRatio(const int ratio)
+{
+    if (ratio == getFakeUploadRatio())
+        return;
+
+    setValue(u"Preferences/Advanced/FakeUploadRatio"_s, ratio);
+}
+
+bool Preferences::isFakeUploadRatioRandomizationEnabled() const
+{
+    return value(u"Preferences/Advanced/FakeUploadRatioRandomization"_s, true);
+}
+
+void Preferences::setFakeUploadRatioRandomizationEnabled(const bool enabled)
+{
+    if (enabled == isFakeUploadRatioRandomizationEnabled())
+        return;
+
+    setValue(u"Preferences/Advanced/FakeUploadRatioRandomization"_s, enabled);
+}
+
 bool Preferences::resolvePeerCountries() const
 {
     return value(u"Preferences/Connection/ResolvePeerCountries"_s, true);

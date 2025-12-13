@@ -193,6 +193,12 @@ namespace
         I2P_OUTBOUND_LENGTH,  // I2P 出站长度 I2P outbound length
 #endif
 
+        // 伪造上传部分
+        // Fake upload section
+        FAKE_UPLOAD_HEADER,
+        FAKE_UPLOAD_RATIO,  // 伪造上传倍数 Fake upload ratio multiplier
+        FAKE_UPLOAD_RATIO_RANDOMIZATION,  // 伪造上传倍数随机 Fake upload ratio randomization
+
         ROW_COUNT  // 行数 Row count
     };
 }
@@ -341,6 +347,12 @@ void AdvancedSettings::saveAdvancedSettings() const
     // 完成后重新检查种子
     // Recheck torrents on completion
     pref->recheckTorrentsOnCompletion(m_checkBoxRecheckCompleted.isChecked());
+    // 伪造上传倍数
+    // Fake upload ratio multiplier
+    pref->setFakeUploadRatio(m_comboBoxFakeUploadRatio.currentData().toInt());
+    // 伪造上传倍数随机
+    // Fake upload ratio randomization
+    pref->setFakeUploadRatioRandomizationEnabled(m_checkBoxFakeUploadRatioRandomization.isChecked());
     // 自定义应用实例名称
     // Customize application instance name
     app()->setInstanceName(m_lineEditAppInstanceName.text());
@@ -1063,6 +1075,7 @@ void AdvancedSettings::loadAdvancedSettings()
     m_spinBoxSessionShutdownTimeout.setSpecialValueText(tr("-1 (unlimited)"));
     m_spinBoxSessionShutdownTimeout.setToolTip(u"Sets the timeout for the session to be shut down gracefully, at which point it will be forcibly terminated.<br>Note that this does not apply to the saving resume data time."_s);
     addRow(SESSION_SHUTDOWN_TIMEOUT, tr("BitTorrent session shutdown timeout [-1: unlimited]"), &m_spinBoxSessionShutdownTimeout);
+
     // 阻塞算法
     // Choking algorithm
     m_comboBoxChokingAlgorithm.addItem(tr("Fixed slots"), QVariant::fromValue(BitTorrent::ChokingAlgorithm::FixedSlots));
@@ -1163,6 +1176,24 @@ void AdvancedSettings::loadAdvancedSettings()
     addRow(I2P_OUTBOUND_LENGTH, (tr("I2P outbound length") + u' ' + makeLink(u"https://www.libtorrent.org/reference-Settings.html#i2p_outbound_length", u"(?)"))
         , &m_spinBoxI2POutboundLength);
 #endif
+
+    auto *labelFakeUploadLink = new QLabel(u""_s, this);
+    addRow(FAKE_UPLOAD_HEADER, u"<b>%1</b>"_s.arg(tr("Fake Upload Section")), labelFakeUploadLink);
+    static_cast<QLabel *>(cellWidget(FAKE_UPLOAD_HEADER, PROPERTY))->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
+
+    // 伪造上传倍数
+    // Fake upload ratio multiplier
+    m_comboBoxFakeUploadRatio.addItem(tr("1x (Disabled)"), 1);
+    m_comboBoxFakeUploadRatio.addItem(tr("2x"), 2);
+    m_comboBoxFakeUploadRatio.addItem(tr("3x"), 3);
+    m_comboBoxFakeUploadRatio.addItem(tr("4x"), 4);
+    m_comboBoxFakeUploadRatio.addItem(tr("5x"), 5);
+    m_comboBoxFakeUploadRatio.setCurrentIndex(m_comboBoxFakeUploadRatio.findData(pref->getFakeUploadRatio()));
+    addRow(FAKE_UPLOAD_RATIO, tr("Fake upload ratio multiplier"), &m_comboBoxFakeUploadRatio);
+    // 伪造上传倍数随机
+    // Fake upload ratio randomization
+    m_checkBoxFakeUploadRatioRandomization.setChecked(pref->isFakeUploadRatioRandomizationEnabled());
+    addRow(FAKE_UPLOAD_RATIO_RANDOMIZATION, tr("Fake upload ratio randomization"), &m_checkBoxFakeUploadRatioRandomization);
 }
 
 template <typename T>
