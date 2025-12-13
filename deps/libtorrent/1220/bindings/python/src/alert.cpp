@@ -23,32 +23,36 @@ using namespace lt;
 #pragma warning( disable : 4996 )
 #endif
 
+// 获取读取片段警报的缓冲区数据
 bytes get_buffer(read_piece_alert const& rpa)
 {
     return rpa.buffer ? bytes(rpa.buffer.get(), rpa.size)
        : bytes();
 }
 
+// 获取统计警报的传输数据列表
 list stats_alert_transferred(stats_alert const& alert)
 {
    list result;
    for (int i = 0; i < alert.num_channels; ++i) {
-      result.append(alert.transferred[i]);
+      result.append(alert.transferred[i]); // 传输的字节数
    }
    return result;
 }
 
+// 从状态更新警报中获取种子状态列表
 list get_status_from_update_alert(state_update_alert const& alert)
 {
    list result;
 
    for (std::vector<torrent_status>::const_iterator i = alert.status.begin(); i != alert.status.end(); ++i)
    {
-      result.append(*i);
+      result.append(*i); // 种子状态信息
    }
    return result;
 }
 
+// 获取DHT统计警报的活动请求列表
 list dht_stats_active_requests(dht_stats_alert const& a)
 {
    list result;
@@ -58,20 +62,21 @@ list dht_stats_active_requests(dht_stats_alert const& a)
    {
 		dict d;
 
-		d["type"] = i->type;
-		d["outstanding_requests"] = i->outstanding_requests;
-		d["timeouts"] = i->timeouts;
-		d["responses"] = i->responses;
-		d["branch_factor"] = i->branch_factor;
-		d["nodes_left"] = i->nodes_left;
-		d["last_sent"] = i->last_sent;
-		d["first_timeout"] = i->first_timeout;
+		d["type"] = i->type; // 查找类型
+		d["outstanding_requests"] = i->outstanding_requests; // 未完成的请求数
+		d["timeouts"] = i->timeouts; // 超时次数
+		d["responses"] = i->responses; // 响应次数
+		d["branch_factor"] = i->branch_factor; // 分支因子
+		d["nodes_left"] = i->nodes_left; // 剩余节点数
+		d["last_sent"] = i->last_sent; // 最后发送时间
+		d["first_timeout"] = i->first_timeout; // 首次超时时间
 
       result.append(d);
    }
    return result;
 }
 
+// 获取DHT统计警报的路由表信息
 list dht_stats_routing_table(dht_stats_alert const& a)
 {
    list result;
@@ -81,48 +86,52 @@ list dht_stats_routing_table(dht_stats_alert const& a)
    {
 		dict d;
 
-		d["num_nodes"] = i->num_nodes;
-		d["num_replacements"] = i->num_replacements;
+		d["num_nodes"] = i->num_nodes; // 节点数量
+		d["num_replacements"] = i->num_replacements; // 替换节点数量
 
       result.append(d);
    }
    return result;
 }
 
+// 获取DHT不可变数据项信息
 dict dht_immutable_item(dht_immutable_item_alert const& alert)
 {
     dict d;
-    d["key"] = alert.target;
-    d["value"] = bytes(alert.item.string());
+    d["key"] = alert.target; // 目标键值
+    d["value"] = bytes(alert.item.string()); // 数据项内容
     return d;
 }
 
+// 获取DHT可变数据项信息
 dict dht_mutable_item(dht_mutable_item_alert const& alert)
 {
     dict d;
-    d["key"] = bytes(alert.key.data(), alert.key.size());
-    d["value"] = bytes(alert.item.string());
-    d["signature"] = bytes(alert.signature.data(), alert.signature.size());
-    d["seq"] = alert.seq;
-    d["salt"] = bytes(alert.salt);
-    d["authoritative"] = alert.authoritative;
+    d["key"] = bytes(alert.key.data(), alert.key.size()); // 公钥
+    d["value"] = bytes(alert.item.string()); // 数据项内容
+    d["signature"] = bytes(alert.signature.data(), alert.signature.size()); // 签名
+    d["seq"] = alert.seq; // 序列号
+    d["salt"] = bytes(alert.salt); // 盐值
+    d["authoritative"] = alert.authoritative; // 是否权威
     return d;
 }
 
+// 获取DHT存储数据项信息
 dict dht_put_item(dht_put_alert const& alert)
 {
     dict d;
     if (alert.target.is_all_zeros()) {
-        d["public_key"] = bytes(alert.public_key.data(), alert.public_key.size());
-        d["signature"] = bytes(alert.signature.data(), alert.signature.size());
-        d["seq"] = alert.seq;
-        d["salt"] = bytes(alert.salt);
+        d["public_key"] = bytes(alert.public_key.data(), alert.public_key.size()); // 公钥
+        d["signature"] = bytes(alert.signature.data(), alert.signature.size()); // 签名
+        d["seq"] = alert.seq; // 序列号
+        d["salt"] = bytes(alert.salt); // 盐值
     } else {
-        d["target"] = alert.target;
+        d["target"] = alert.target; // 目标哈希值
     }
     return d;
 }
 
+// 获取会话统计值字典
 dict session_stats_values(session_stats_alert const& alert)
 {
     std::vector<stats_metric> map = session_stats_metrics();
@@ -131,11 +140,12 @@ dict session_stats_values(session_stats_alert const& alert)
 
     for (stats_metric const& m : map)
     {
-        d[m.name] = counters[m.value_index];
+        d[m.name] = counters[m.value_index]; // 统计指标名称和对应的值
     }
     return d;
 }
 
+// 获取DHT活动节点列表
 list dht_live_nodes_nodes(dht_live_nodes_alert const& alert)
 {
     list result;
@@ -143,13 +153,14 @@ list dht_live_nodes_nodes(dht_live_nodes_alert const& alert)
     for (std::pair<sha1_hash, udp::endpoint> const& node : nodes)
     {
         dict d;
-        d["nid"] = node.first;
-        d["endpoint"] = node.second;
+        d["nid"] = node.first; // 节点ID
+        d["endpoint"] = node.second; // 节点端点
         result.append(d);
     }
     return result;
 }
 
+// 获取DHT信息哈希采样节点列表
 list dht_sample_infohashes_nodes(dht_sample_infohashes_alert const& alert)
 {
     list result;
@@ -157,18 +168,19 @@ list dht_sample_infohashes_nodes(dht_sample_infohashes_alert const& alert)
     for (std::pair<sha1_hash, udp::endpoint> const& node : nodes)
     {
         dict d;
-        d["nid"] = node.first;
-        d["endpoint"] = node.second;
+        d["nid"] = node.first; // 节点ID
+        d["endpoint"] = node.second; // 节点端点
         result.append(d);
     }
     return result;
 }
 
 #if TORRENT_ABI_VERSION == 1
+// 获取恢复数据条目（已废弃）
 entry const& get_resume_data_entry(save_resume_data_alert const& self)
 {
     python_deprecated("resume_data is deprecated");
-    return *self.resume_data;
+    return *self.resume_data; // 恢复数据指针
 }
 #endif
 
@@ -288,19 +300,22 @@ namespace boost
 struct dummy3 {};
 struct dummy12 {};
 
+// 获取DHT数据包缓冲区
 bytes get_pkt_buf(dht_pkt_alert const& alert)
 {
-    return {alert.pkt_buf().data(), static_cast<std::size_t>(alert.pkt_buf().size())};
+    return {alert.pkt_buf().data(), static_cast<std::size_t>(alert.pkt_buf().size())}; // 数据包缓冲区数据
 }
 
+// 获取已丢弃的警报列表
 list get_dropped_alerts(alerts_dropped_alert const& alert)
 {
     list ret;
     for (int i = 0; i < int(alert.dropped_alerts.size()); ++i)
-        ret.append(bool(alert.dropped_alerts[i]));
+        ret.append(bool(alert.dropped_alerts[i])); // 警报是否被丢弃
     return ret;
 }
 
+// 绑定警报类到Python
 void bind_alert()
 {
     using boost::noncopyable;
@@ -309,13 +324,13 @@ void bind_alert()
 
     {
         scope alert_scope = class_<alert, noncopyable >("alert", no_init)
-            .def("message", &alert::message)
-            .def("what", &alert::what)
-            .def("category", &alert::category)
+            .def("message", &alert::message) // 获取警报消息
+            .def("what", &alert::what) // 获取警报类型名称
+            .def("category", &alert::category) // 获取警报类别
 #if TORRENT_ABI_VERSION == 1
-            .def("severity", depr(&alert::severity))
+            .def("severity", depr(&alert::severity)) // 获取警报严重程度（已废弃）
 #endif
-            .def("__str__", &alert::message)
+            .def("__str__", &alert::message) // 字符串表示
             ;
 
 #if TORRENT_ABI_VERSION == 1
@@ -435,19 +450,21 @@ void bind_alert()
 
     def("operation_name", static_cast<char const*(*)(operation_t)>(&lt::operation_name));
 
+    // 种子警报基类
     class_<torrent_alert, bases<alert>, noncopyable>(
         "torrent_alert", no_init)
-        .add_property("handle", make_getter(&torrent_alert::handle, by_value()))
-        .add_property("torrent_name", &torrent_alert::torrent_name)
+        .add_property("handle", make_getter(&torrent_alert::handle, by_value())) // 种子句柄
+        .add_property("torrent_name", &torrent_alert::torrent_name) // 种子名称
         ;
 
+    // 跟踪器警报基类
     class_<tracker_alert, bases<torrent_alert>, noncopyable>(
         "tracker_alert", no_init)
 #if TORRENT_ABI_VERSION == 1
-        .def_readonly("url", &tracker_alert::url)
+        .def_readonly("url", &tracker_alert::url) // 跟踪器URL（已废弃）
 #endif
-        .add_property("local_endpoint", make_getter(&tracker_alert::local_endpoint, by_value()))
-        .def("tracker_url", &tracker_alert::tracker_url)
+        .add_property("local_endpoint", make_getter(&tracker_alert::local_endpoint, by_value())) // 本地端点
+        .def("tracker_url", &tracker_alert::tracker_url) // 跟踪器URL
         ;
 
 #if TORRENT_ABI_VERSION == 1
@@ -456,134 +473,156 @@ void bind_alert()
         ;
 #endif
 
+    // 种子已移除警报
     class_<torrent_removed_alert, bases<torrent_alert>, noncopyable>(
         "torrent_removed_alert", no_init)
-        .def_readonly("info_hash", &torrent_removed_alert::info_hash)
+        .def_readonly("info_hash", &torrent_removed_alert::info_hash) // 信息哈希值
         ;
 
+    // 读取片段警报
     class_<read_piece_alert, bases<torrent_alert>, noncopyable>(
         "read_piece_alert", nullptr, no_init)
-        .def_readonly("error", &read_piece_alert::error)
+        .def_readonly("error", &read_piece_alert::error) // 错误代码
 #if TORRENT_ABI_VERSION == 1
-        .def_readonly("ec", &read_piece_alert::ec)
+        .def_readonly("ec", &read_piece_alert::ec) // 错误代码（已废弃）
 #endif
-        .add_property("buffer", get_buffer)
-        .add_property("piece", make_getter(&read_piece_alert::piece, by_value()))
-        .def_readonly("size", &read_piece_alert::size)
+        .add_property("buffer", get_buffer) // 数据缓冲区
+        .add_property("piece", make_getter(&read_piece_alert::piece, by_value())) // 片段索引
+        .def_readonly("size", &read_piece_alert::size) // 数据大小
         ;
 
+    // 对等节点警报基类
     class_<peer_alert, bases<torrent_alert>, noncopyable>(
         "peer_alert", no_init)
 #if TORRENT_ABI_VERSION == 1
-        .add_property("ip", make_getter(&peer_alert::ip, by_value()))
+        .add_property("ip", make_getter(&peer_alert::ip, by_value())) // IP地址（已废弃）
 #endif
-        .add_property("endpoint", make_getter(&peer_alert::endpoint, by_value()))
-        .def_readonly("pid", &peer_alert::pid)
+        .add_property("endpoint", make_getter(&peer_alert::endpoint, by_value())) // 端点地址
+        .def_readonly("pid", &peer_alert::pid) // 对等节点ID
     ;
+    // 跟踪器错误警报
     class_<tracker_error_alert, bases<tracker_alert>, noncopyable>(
         "tracker_error_alert", no_init)
 #if TORRENT_ABI_VERSION == 1
-        .def_readonly("msg", &tracker_error_alert::msg)
-        .def_readonly("status_code", &tracker_error_alert::status_code)
+        .def_readonly("msg", &tracker_error_alert::msg) // 错误消息（已废弃）
+        .def_readonly("status_code", &tracker_error_alert::status_code) // HTTP状态码（已废弃）
 #endif
-        .def("error_message", &tracker_error_alert::error_message)
-        .def_readonly("times_in_row", &tracker_error_alert::times_in_row)
-        .def_readonly("error", &tracker_error_alert::error)
+        .def("error_message", &tracker_error_alert::error_message) // 错误消息
+        .def_readonly("times_in_row", &tracker_error_alert::times_in_row) // 连续失败次数
+        .def_readonly("error", &tracker_error_alert::error) // 错误代码
         ;
 
+    // 跟踪器警告警报
     class_<tracker_warning_alert, bases<tracker_alert>, noncopyable>(
         "tracker_warning_alert", no_init);
 
+    // 跟踪器响应警报
     class_<tracker_reply_alert, bases<tracker_alert>, noncopyable>(
         "tracker_reply_alert", no_init)
-        .def_readonly("num_peers", &tracker_reply_alert::num_peers)
+        .def_readonly("num_peers", &tracker_reply_alert::num_peers) // 对等节点数量
         ;
 
+    // 跟踪器通告警报
     class_<tracker_announce_alert, bases<tracker_alert>, noncopyable>(
         "tracker_announce_alert", no_init)
-        .def_readonly("event", &tracker_announce_alert::event)
+        .def_readonly("event", &tracker_announce_alert::event) // 通告事件类型
         ;
 
+    // 哈希校验失败警报
     class_<hash_failed_alert, bases<torrent_alert>, noncopyable>(
         "hash_failed_alert", no_init)
-        .add_property("piece_index", make_getter(&hash_failed_alert::piece_index, by_value()))
+        .add_property("piece_index", make_getter(&hash_failed_alert::piece_index, by_value())) // 片段索引
         ;
 
+    // 对等节点封禁警报
     class_<peer_ban_alert, bases<peer_alert>, noncopyable>(
         "peer_ban_alert", no_init);
 
+    // 对等节点错误警报
     class_<peer_error_alert, bases<peer_alert>, noncopyable>(
         "peer_error_alert", no_init)
-        .def_readonly("error", &peer_error_alert::error)
-        .def_readonly("op", &peer_error_alert::op)
+        .def_readonly("error", &peer_error_alert::error) // 错误代码
+        .def_readonly("op", &peer_error_alert::op) // 操作类型
         ;
 
+    // 无效请求警报
     class_<invalid_request_alert, bases<peer_alert>, noncopyable>(
         "invalid_request_alert", no_init)
-        .def_readonly("request", &invalid_request_alert::request)
+        .def_readonly("request", &invalid_request_alert::request) // 请求信息
         ;
 
+    // 对等节点请求结构
     class_<peer_request>("peer_request")
-        .add_property("piece", make_getter(&peer_request::piece, by_value()))
-        .def_readonly("start", &peer_request::start)
-        .def_readonly("length", &peer_request::length)
-        .def(self == self)
+        .add_property("piece", make_getter(&peer_request::piece, by_value())) // 片段索引
+        .def_readonly("start", &peer_request::start) // 起始偏移
+        .def_readonly("length", &peer_request::length) // 数据长度
+        .def(self == self) // 相等比较运算符
         ;
 
+    // 种子错误警报
     class_<torrent_error_alert, bases<torrent_alert>, noncopyable>(
         "torrent_error_alert", no_init)
-        .def_readonly("error", &torrent_error_alert::error)
+        .def_readonly("error", &torrent_error_alert::error) // 错误代码
         ;
 
+    // 种子完成警报
     class_<torrent_finished_alert, bases<torrent_alert>, noncopyable>(
         "torrent_finished_alert", no_init);
 
+    // 片段完成警报
     class_<piece_finished_alert, bases<torrent_alert>, noncopyable>(
         "piece_finished_alert", no_init)
-        .add_property("piece_index", make_getter(&piece_finished_alert::piece_index, by_value()))
+        .add_property("piece_index", make_getter(&piece_finished_alert::piece_index, by_value())) // 片段索引
         ;
 
+    // 数据块完成警报
     class_<block_finished_alert, bases<peer_alert>, noncopyable>(
         "block_finished_alert", no_init)
-        .add_property("block_index", make_getter(&block_finished_alert::block_index, by_value()))
-        .add_property("piece_index", make_getter(&block_finished_alert::piece_index, by_value()))
+        .add_property("block_index", make_getter(&block_finished_alert::block_index, by_value())) // 数据块索引
+        .add_property("piece_index", make_getter(&block_finished_alert::piece_index, by_value())) // 片段索引
         ;
 
+    // 数据块下载中警报
     class_<block_downloading_alert, bases<peer_alert>, noncopyable>(
         "block_downloading_alert", no_init)
 #if TORRENT_ABI_VERSION == 1
-        .def_readonly("peer_speedmsg", &block_downloading_alert::peer_speedmsg)
+        .def_readonly("peer_speedmsg", &block_downloading_alert::peer_speedmsg) // 对等节点速度消息（已废弃）
 #endif
-        .add_property("block_index", make_getter(&block_downloading_alert::block_index, by_value()))
-        .add_property("piece_index", make_getter(&block_downloading_alert::piece_index, by_value()))
+        .add_property("block_index", make_getter(&block_downloading_alert::block_index, by_value())) // 数据块索引
+        .add_property("piece_index", make_getter(&block_downloading_alert::piece_index, by_value())) // 片段索引
         ;
 
+    // 存储已移动警报
     class_<storage_moved_alert, bases<torrent_alert>, noncopyable>(
         "storage_moved_alert", no_init)
 #if TORRENT_ABI_VERSION == 1
-        .def_readonly("path", &storage_moved_alert::path)
+        .def_readonly("path", &storage_moved_alert::path) // 路径（已废弃）
 #endif
-        .def("storage_path", &storage_moved_alert::storage_path)
+        .def("storage_path", &storage_moved_alert::storage_path) // 存储路径
         ;
 
+    // 存储移动失败警报
     class_<storage_moved_failed_alert, bases<torrent_alert>, noncopyable>(
         "storage_moved_failed_alert", no_init)
-        .def_readonly("error", &storage_moved_failed_alert::error)
-        .def("file_path", &storage_moved_failed_alert::file_path)
-        .def_readonly("op", &storage_moved_failed_alert::op)
+        .def_readonly("error", &storage_moved_failed_alert::error) // 错误代码
+        .def("file_path", &storage_moved_failed_alert::file_path) // 文件路径
+        .def_readonly("op", &storage_moved_failed_alert::op) // 操作类型
 #if TORRENT_ABI_VERSION == 1
-        .def_readonly("operation", &storage_moved_failed_alert::operation)
+        .def_readonly("operation", &storage_moved_failed_alert::operation) // 操作类型（已废弃）
 #endif
         ;
 
+    // 种子已删除警报
     class_<torrent_deleted_alert, bases<torrent_alert>, noncopyable>(
         "torrent_deleted_alert", no_init)
-        .def_readonly("info_hash", &torrent_deleted_alert::info_hash)
+        .def_readonly("info_hash", &torrent_deleted_alert::info_hash) // 信息哈希值
     ;
 
+    // 种子已暂停警报
     class_<torrent_paused_alert, bases<torrent_alert>, noncopyable>(
         "torrent_paused_alert", no_init);
 
+    // 种子已检查警报
     class_<torrent_checked_alert, bases<torrent_alert>, noncopyable>(
         "torrent_checked_alert", no_init);
 
