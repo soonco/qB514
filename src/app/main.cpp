@@ -51,6 +51,7 @@
 
 #ifndef DISABLE_GUI
 // GUI-only includes
+// 仅 GUI 包含文件
 #include <QFont>
 #include <QMessageBox>
 #include <QPainter>
@@ -92,7 +93,9 @@ namespace
 #if defined(Q_OS_WIN) && !defined(DISABLE_GUI)
         QMessageBox msgBox(QMessageBox::Critical, QCoreApplication::translate("Main", "Bad command line"),
                            (message + u'\n' + help), QMessageBox::Ok);
-        msgBox.show(); // Need to be shown or to moveToCenter does not work
+        // Need to be shown or to moveToCenter does not work
+        // 需要先显示，否则 moveToCenter 不会工作
+        msgBox.show();
         msgBox.move(Utils::Gui::screenCenter(&msgBox));
         msgBox.exec();
 #else
@@ -112,7 +115,9 @@ namespace
             msgBox.setIcon(QMessageBox::Critical);
             msgBox.setText(QCoreApplication::translate("Main", "An unrecoverable error occurred."));
             msgBox.setInformativeText(message);
-            msgBox.show(); // Need to be shown or to moveToCenter does not work
+            // Need to be shown or to moveToCenter does not work
+            // 需要先显示，否则 moveToCenter 不会工作
+            msgBox.show();
             msgBox.move(Utils::Gui::screenCenter(&msgBox));
             msgBox.exec();
         }
@@ -163,7 +168,9 @@ namespace
     void adjustLocale()
     {
         // specify the default locale just in case if user has not set any other locale
+        // 指定默认语言环境，以防用户没有设置任何其他语言环境
         // only `C` locale is available universally without installing locale packages
+        // 只有 `C` 语言环境在不安装语言包的情况下普遍可用
         if (qEnvironmentVariableIsEmpty("LANG"))
             qputenv("LANG", "C.UTF-8");
     }
@@ -171,6 +178,7 @@ namespace
 }
 
 // Main
+// 主函数
 int main(int argc, char *argv[])
 {
 #ifdef DISABLE_GUI
@@ -183,18 +191,23 @@ int main(int argc, char *argv[])
 #endif
 
     // We must save it here because QApplication constructor may change it
+    // 我们必须在这里保存它，因为 QApplication 构造函数可能会改变它
     const bool isOneArg = (argc == 2);
 
     // `app` must be declared out of try block to allow display message box in case of exception
+    // `app` 必须在 try 块外声明，以便在发生异常时显示消息框
     std::unique_ptr<Application> app;
     try
     {
         // Create Application
+        // 创建应用程序
         app = std::make_unique<Application>(argc, argv);
 
 #ifdef Q_OS_WIN
         // QCoreApplication::applicationDirPath() needs an Application object instantiated first
+        // QCoreApplication::applicationDirPath() 需要先实例化一个 Application 对象
         // Let's hope that there won't be a crash before this line
+        // 希望在这行之前不会发生崩溃
         const char envName[] = "_NT_SYMBOL_PATH";
         const QString envValue = qEnvironmentVariable(envName);
         if (envValue.isEmpty())
@@ -234,6 +247,7 @@ int main(int argc, char *argv[])
         }
 
         // Check if qBittorrent is already running
+        // 检查 qBittorrent 是否已经在运行
         if (app->hasAnotherInstance())
         {
 #if defined(DISABLE_GUI) && !defined(Q_OS_WIN)
@@ -244,6 +258,7 @@ int main(int argc, char *argv[])
             }
 
             // print friendly message if there are no other command line args
+            // 如果没有其他命令行参数，打印友好消息
             if (argc == 1)
             {
                 const QString message = QCoreApplication::translate("Main", "Another qBittorrent instance is already running.");
@@ -269,6 +284,7 @@ int main(int argc, char *argv[])
             const bool isInteractive = (_isatty(_fileno(stdin)) != 0) && (_isatty(_fileno(stdout)) != 0);
 #else
             // when run in daemon mode user can only dismiss the notice with command line option
+            // 在守护进程模式下运行时，用户只能通过命令行选项关闭通知
             const bool isInteractive = !params.shouldDaemonize
                 && ((isatty(fileno(stdin)) != 0) && (isatty(fileno(stdout)) != 0));
 #endif
@@ -279,12 +295,16 @@ int main(int argc, char *argv[])
 
 #ifdef Q_OS_MACOS
         // Since Apple made difficult for users to set PATH, we set here for convenience.
+        // 由于 Apple 让用户设置 PATH 变得困难，我们在这里为方便起见进行设置。
         // Users are supposed to install Homebrew Python for search function.
+        // 用户应该为搜索功能安装 Homebrew Python。
         // For more info see issue #5571.
+        // 更多信息请参见问题 #5571。
         const QByteArray path = "/usr/local/bin:" + qgetenv("PATH");
         qputenv("PATH", path.constData());
 
         // On OS X the standard is to not show icons in the menus
+        // 在 OS X 上，标准是不在菜单中显示图标
         app->setAttribute(Qt::AA_DontShowIconsInMenus);
 #else
         if (!Preferences::instance()->iconsInMenusEnabled())
@@ -294,7 +314,9 @@ int main(int argc, char *argv[])
 #if defined(DISABLE_GUI) && !defined(Q_OS_WIN)
         if (params.shouldDaemonize)
         {
-            app.reset(); // Destroy current application instance
+            // Destroy current application instance
+            // 销毁当前应用程序实例
+            app.reset();
             if (::daemon(1, 0) == 0)
             {
                 app = std::make_unique<Application>(argc, argv);
@@ -302,10 +324,13 @@ int main(int argc, char *argv[])
                 {
                     // It is undefined behavior to write to log file since there is another qbt instance
                     // in play. But we still do it since there is chance that the log message will survive.
+                    // 由于有另一个 qbt 实例在运行，写入日志文件是未定义的行为。
+                    // 但我们仍然这样做，因为日志消息有可能会保留下来。
                     const QString errorMessage = QCoreApplication::translate("Main", "Found unexpected qBittorrent instance. Exiting this instance. Current process ID: %1.")
                         .arg(QString::number(QCoreApplication::applicationPid()));
                     LogMsg(errorMessage, Log::CRITICAL);
                     // stdout, stderr is closed so we can't use them
+                    // stdout, stderr 已关闭，所以我们不能使用它们
                     return EXIT_FAILURE;
                 }
             }
