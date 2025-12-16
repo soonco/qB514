@@ -84,6 +84,7 @@ namespace {
 
 		ret["total_uploaded"] = atp.total_uploaded;
 		ret["total_downloaded"] = atp.total_downloaded;
+		ret["total_real_uploaded"] = atp.total_real_uploaded;
 
 		// cast to seconds in case that internal values doesn't have ratio<1>
 		ret["active_time"] = atp.active_time;

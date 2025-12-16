@@ -1264,6 +1264,7 @@ namespace libtorrent {
 		// stored in resume data
 		std::int64_t m_total_uploaded = 0;
 		std::int64_t m_total_downloaded = 0;
+		std::int64_t m_total_real_uploaded = 0;
 
 		// this is a handle that keeps the storage object in the disk io subsystem
 		// alive, as well as the index referencing the storage/torrent in the disk

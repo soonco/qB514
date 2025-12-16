@@ -385,6 +385,7 @@ bool is_downloading_state(int const st)
 
 		m_total_uploaded = p.total_uploaded;
 		m_total_downloaded = p.total_downloaded;
+		m_total_real_uploaded = p.total_real_uploaded;
 
 		// the number of seconds this torrent has spent in started, finished and
 		// seeding state so far, respectively.
@@ -6486,6 +6487,7 @@ bool is_downloading_state(int const st)
 		ret.storage_mode = storage_mode();
 		ret.total_uploaded = m_total_uploaded;
 		ret.total_downloaded = m_total_downloaded;
+		ret.total_real_uploaded = m_total_real_uploaded;
 
 		// cast to seconds in case that internal values doesn't have ratio<1>
 		ret.active_time = static_cast<int>(total_seconds(active_time()));
@@ -9514,6 +9516,7 @@ bool is_downloading_state(int const st)
         }
         m_total_uploaded += m_stat.last_payload_uploaded() * upload_radio;
         m_total_downloaded += m_stat.last_payload_downloaded();
+        m_total_real_uploaded += m_stat.last_payload_uploaded();
         m_stat.second_tick(tick_interval_ms);
 
 		// these counters are saved in the resume data, since they updated

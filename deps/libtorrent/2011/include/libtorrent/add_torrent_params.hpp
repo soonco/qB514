@@ -258,6 +258,7 @@ TORRENT_VERSION_NAMESPACE_3
 		// far.
 		std::int64_t total_uploaded = 0;
 		std::int64_t total_downloaded = 0;
+		std::int64_t total_real_uploaded = 0;
 
 		// the number of seconds this torrent has spent in started, finished and
 		// seeding state so far, respectively.

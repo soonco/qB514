@@ -230,6 +230,7 @@ namespace {
 
 		ret.total_uploaded = rd.dict_find_int_value("total_uploaded");
 		ret.total_downloaded = rd.dict_find_int_value("total_downloaded");
+		ret.total_real_uploaded = rd.dict_find_int_value("total_real_uploaded");
 
 		ret.active_time = int(rd.dict_find_int_value("active_time"));
 		ret.finished_time = int(rd.dict_find_int_value("finished_time"));

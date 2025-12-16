@@ -1332,6 +1332,7 @@ namespace libtorrent {
 		// stored in resume data
 		std::int64_t m_total_uploaded = 0;
 		std::int64_t m_total_downloaded = 0;
+		std::int64_t m_total_real_uploaded = 0;
 
 		// the number of bytes of pad files
 		std::int64_t m_padding_bytes = 0;
